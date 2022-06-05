@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+	
+	<body>
+		<h1>Aggiungi un corso</h1>
+		<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>
+			<div>
+				<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+			<div>
+				<span>Data:</span> <span><input type="text"
+					th:field="*{data}" /></span> <span
+					th:if="${#fields.hasErrors('data')}"
+					th:errors="*{data}"></span>
+			</div>
+			<div>
+				<span>Difficoltà:</span>
+				<input type = 'radio' th:field= '*{difficolta}' id="facile" value="facile"/>
+				<label for="facile">Facile </label>
+					
+				<input type = 'radio' th:field= '*{difficolta}' id="intermedio" value="intermedio"/>
+				<label for="intermedio">Intermedio</label>
+				
+				<input type = 'radio' th:field= '*{difficolta}' id="avanzato" value="avanzato"/>
+				<label for="avanzato">Avanzato</label>
+				
+				<span th:if="${#fields.hasErrors('difficolta')}" th:errors="*{difficolta}"></span>
+			</div>
+			<div>
+				<span>Durata:</span> <span><input type="text" th:field="*{durata}" /></span>
+				<span th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
+			</div>
+			<div>
+				<span>Descrizione:</span> <span><input type="text" th:field="*{descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+			<div>
+				<span>Sala:</span> <span><input type="text" th:field="*{sala}" /></span>
+				<span th:if="${#fields.hasErrors('sala')}" th:errors="*{sala}"></span>
+			</div>
+			<div>
+				<span>Numero masssimo di persone:</span> <span><input type="text" th:field="*{numeroMaxPersone}" /></span>
+				<span th:if="${#fields.hasErrors('numeroMaxPersone')}" th:errors="*{numeroMaxPersone}"></span>
+			</div>
+			<div>Trainer: 
+				<input type = 'radio' th:field = '*{trainer}' th:each="trainer : ${trainers}"
+				th:text="${trainer.nome} + ' ' + ${trainer.cognome}" th:value="${trainer.id}"/>
+			</div>
+			<div>
+				<span><button type="submit">CONFERMA</button></span>
+			</div>
+		</form>
+	</body>
+</html>
+

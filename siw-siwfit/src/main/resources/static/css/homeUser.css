@@ -1,0 +1,132 @@
+body {
+    background-color: black;
+    margin: 0;
+	-webkit-font-smoothing: antialiased;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    height: 80px;
+    margin-left: 20%;
+    margin-top: 20%;
+}
+
+#container {
+    padding-left: 10%;
+    padding-top: 2.5%;
+    font-size: x-large;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    margin-right: 30px;
+}
+
+a:hover {
+    color: #ff5d66;
+    pointer-events: cursor;
+}
+
+#home {
+    color: #ff5d66;
+}
+
+#main_content {
+    background-image: url("/images/sfondo_home.jpg");
+    background-position: center ;
+    background-size: cover;
+    height: 500px;
+    text-align: center;
+    color: aliceblue;
+    margin-top: 2%;
+}
+
+.letter {
+    color: #ff5d66;
+}
+
+h1 {
+    margin: unset;
+    padding-top: 5%;
+    padding-right: 5%;
+    text-align: initial;
+    display: flex;
+    flex-direction: column;
+}
+
+#slogan {
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer {
+    color: aliceblue;
+}
+
+#info_user {
+	padding-left: 10%;
+    padding-top: 2.5%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  color:white;
+  background-image: url("/images/user.png");
+  height:60px;
+  width:60px;
+  border-radius:50%;
+  background-size: cover;
+  margin-left: 200px;
+  margin-top: 2%;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -225%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+ content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#logout {
+	margin-right:0;
+	color:white;
+}
+
+#logout:hover {
+	color:#ff5d66;
+}

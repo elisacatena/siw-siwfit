@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${trainer.nome}+' '+${trainer.cognome}"></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	
+	<body>
+		<div>
+			<h4>Dettagli trainer</h4>
+		</div>
+		<div>
+			<span th:text="${trainer.nome}">nome trainer</span>
+		</div>
+		<div>
+			<span th:text="${trainer.cognome}">cognome trainer</span>
+		</div>
+		
+		<ul>
+			<li th:each="corso : ${trainer.corsi}" >
+				<a th:href="@{'/user/corso'+'/'+${corso.id}}" th:text="${corso.nome}"> nome corso</a>
+			</li>
+		</ul>
+		
+		<footer>
+			<a th:href="@{/user/homeuser}">Home</a>
+		</footer>
+	</body>
+</html>

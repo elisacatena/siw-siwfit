@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<div>
+			<h4>Lista dei corsi</h4>
+		</div>
+		
+		<a th:href="@{/admin/crea_corso}"> ➕</a>
+		
+		<div>
+			<ul>
+				<li th:each="corso: ${corsi}">
+					<a th:href="@{'/admin/dettagli_corso'+'/'+${corso.id}}" th:text="${corso.nome}"></a>
+					<a th:href="@{'/admin/modifica_corso'+'/'+${corso.id}}" >📝</a>
+					<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}">🗑</a>
+				</li>
+			</ul>
+		</div>
+		<footer>
+			<a th:href="@{/admin/homeadmin}">Home</a>
+		</footer>
+	</body>
+</html>

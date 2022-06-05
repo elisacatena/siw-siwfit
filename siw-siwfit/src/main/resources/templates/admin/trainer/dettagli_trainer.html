@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div>
+		<h4>Dettagli trainer</h4>
+	</div>
+	<div>
+		<span th:text="${trainer.nome}">nome trainer</span>
+	</div>
+	<div>
+		<span th:text="${trainer.descrizione}">descrizione trainer</span>
+	</div>
+	<div>
+		<h4>Corsi di questo trainer:</h4>
+		<ul>
+			<li th:each="corso : ${trainer.corsi}">
+				<span th:text="${corso.nome}"></span>
+			</li>
+		</ul>
+	</div>
+	<footer>
+		<a th:href="@{/admin/homeadmin}">Home</a>
+	</footer>
+</body>
+</html>

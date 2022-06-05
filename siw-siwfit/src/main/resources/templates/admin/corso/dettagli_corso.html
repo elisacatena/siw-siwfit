@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div>
+		<h4>Dettagli trainer</h4>
+	</div>
+	<div>
+		<span th:text="${corso.nome}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.data}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.difficolta}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.durata}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.descrizione}">descrizione trainer</span>
+	</div>
+	<div>
+		<span th:text="${corso.sala}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.numeroMaxPersone}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.trainer.nome}">nome corso</span>
+	</div>
+	<div>
+		<span th:text="${corso.categoria.nome}">nome corso</span>
+	</div>
+	
+	<!-- eventualmente aggiungere lista iscritti -->
+	
+	<footer>
+		<a th:href="@{/admin/homeadmin}">Home</a>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>I nostri trainers</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/trainers.css">
+	</head>
+	
+	<body>
+	
+		<header>
+				<nav>
+					<div id="img_wrapper">
+						<img src="/images/logo.png">
+					</div>
+					<div id="container">
+						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
+						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
+						<a class="link_nav" id="trainers" th:href="@{/user/trainers}">Trainers</a>
+						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+					</div>
+					
+					<div class="tooltip">
+		  			<div class="tooltiptext">
+		  				<div>
+		  					<p th:text="${user.nome}"></p>
+		  					<p th:text="${user.cognome}"></p>
+		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+		  				</div>
+		  			</div>
+				</div>		
+				
+				</nav>
+			</header>
+			
+			<h4>Elenco trainer</h4>
+			<div id="trainers_wrapper">
+				<ul>
+					<li th:each="trainer : ${trainers}">
+							<div id="dettagli_wrapper"> 
+								<div id="dettagli_trainer">
+									<span th:text="${trainer.nome}+ ' ' +${trainer.cognome}">trainer</span>
+									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}}" >DETTAGLI</a>
+								</div>
+							</div>
+					</li>
+				</ul>
+			</div>
+
+		
+		<footer>
+			FOOTER
+		</footer>
+	</body>
+</html>

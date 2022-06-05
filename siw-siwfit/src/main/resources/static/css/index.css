@@ -1,0 +1,103 @@
+/*PROGETTO SIW FIT*/
+body {
+    background-color: white;
+    font-family: "Gilroy-Bold",sans-serif;
+    margin: 0;
+	-webkit-font-smoothing: antialiased;
+    width: 100%;
+}
+
+header {
+    font-weight: 540;
+    margin: 3%;
+    text-align: center;
+    font-family: monospace;
+    font-size: xxx-large;
+}
+
+img {
+    height: 20%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 15%;
+}
+
+#login_wrapper {
+    display: flex;
+    width: 70%;
+    min-height: auto;
+    flex-direction: row;
+    margin: auto;
+    height: 100%;
+    padding-bottom: 4%;
+}
+
+#image_wrapper {
+    position: relative;
+    display: block;
+    width: 50%;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    background-position: 0 0;
+    background-image: url("/images/login.jpg");
+    background-position: center ;
+    background-size: cover;
+}
+
+#form_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    background-color: #0d0d0d;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    padding: 0px;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+form {
+	display: flex;
+    flex-direction: column;
+}
+
+#form {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-content: center;
+}
+
+.input_form {
+    margin-bottom: 10%;
+}
+
+#login_butt {
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding-bottom: 7%;
+}
+
+input {
+    width: 250px;
+    height: 30px;
+}
+
+#input_butt:hover {
+    background-color: white;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
