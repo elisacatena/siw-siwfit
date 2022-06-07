@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.siwfit.controller.validator.CorsoValidator;
 import it.uniroma3.siw.siwfit.model.Corso;
 import it.uniroma3.siw.siwfit.model.User;
+import it.uniroma3.siw.siwfit.service.CategoriaService;
 import it.uniroma3.siw.siwfit.service.CorsoService;
 import it.uniroma3.siw.siwfit.service.CredenzialiService;
 import it.uniroma3.siw.siwfit.service.TrainerService;
@@ -40,6 +41,9 @@ public class CorsoController {
 
 	@Autowired
 	private TrainerService trainerService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 
 	/* id è del corso.
 	 * Il metodo resituisce un corso tramite il suo id.
@@ -105,6 +109,7 @@ public class CorsoController {
 	@GetMapping("/admin/crea_corso")
 	public String addCorsoForm(Model model) {
 		model.addAttribute("trainers", this.trainerService.findAll());
+		model.addAttribute("categorie", this.categoriaService.findAll());
 		model.addAttribute("corso", new Corso());
 		return "admin/corso/crea_corso.html";
 	}
@@ -125,6 +130,7 @@ public class CorsoController {
 	@GetMapping("/admin/modifica_corso/{id}")
 	public String modificaCorsoForm(@PathVariable("id")  Long id, Model model) {
 		model.addAttribute("trainers", this.trainerService.findAll());
+		model.addAttribute("categorie", this.categoriaService.findAll());
 		model.addAttribute("corso", this.corsoService.findById(id));
 		return "/admin/corso/modifica_corso.html";
 	}

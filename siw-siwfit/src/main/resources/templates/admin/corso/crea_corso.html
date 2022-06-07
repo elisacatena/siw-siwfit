@@ -22,14 +22,14 @@
 			</div>
 			<div>
 				<span>Difficoltà:</span>
-				<input type = 'radio' th:field= '*{difficolta}' id="facile" value="facile"/>
-				<label for="facile">Facile </label>
+				<input type = 'radio' th:field= '*{difficolta}' id="facile" value="😎facile"/>
+				<label for="facile">😎Facile </label>
 					
-				<input type = 'radio' th:field= '*{difficolta}' id="intermedio" value="intermedio"/>
-				<label for="intermedio">Intermedio</label>
+				<input type = 'radio' th:field= '*{difficolta}' id="intermedio" value="🥵intermedio"/>
+				<label for="intermedio">🥵Intermedio</label>
 				
-				<input type = 'radio' th:field= '*{difficolta}' id="avanzato" value="avanzato"/>
-				<label for="avanzato">Avanzato</label>
+				<input type = 'radio' th:field= '*{difficolta}' id="avanzato" value="🔥avanzato"/>
+				<label for="avanzato">🔥Avanzato</label>
 				
 				<span th:if="${#fields.hasErrors('difficolta')}" th:errors="*{difficolta}"></span>
 			</div>
@@ -52,6 +52,10 @@
 			<div>Trainer: 
 				<input type = 'radio' th:field = '*{trainer}' th:each="trainer : ${trainers}"
 				th:text="${trainer.nome} + ' ' + ${trainer.cognome}" th:value="${trainer.id}"/>
+			</div>
+			<div>Categoria: 
+				<input type = 'radio' th:field = '*{categoria}' th:each="categoria : ${categorie}"
+				th:text="${categoria.nome} " th:value="${categoria.id}"/>
 			</div>
 			<div>
 				<span><button type="submit">CONFERMA</button></span>
