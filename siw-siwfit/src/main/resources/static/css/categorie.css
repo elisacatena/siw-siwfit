@@ -5,6 +5,13 @@ body {
     width: 100%;
 }
 
+header {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -56,6 +63,7 @@ a:hover {
     width: 25%;
     height: 400px;
     justify-content: center;
+    margin-bottom: 3%;
 }
 
 #dettagli_corso {
@@ -65,6 +73,7 @@ a:hover {
 
 ul {
 	margin: 3%;
+	margin-top: 12%;
 }
 
 #nome_cat {

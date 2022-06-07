@@ -5,6 +5,13 @@ body {
     width: 100%;
 }
 
+header {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -44,7 +51,7 @@ a:hover {
     height: 500px;
     text-align: center;
     color: aliceblue;
-    margin-top: 2%;
+    margin-top: 12%;
 }
 
 .letter {

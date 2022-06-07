@@ -5,6 +5,13 @@ body {
     width: 100%;
 }
 
+header {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -84,7 +91,6 @@ a:hover {
   opacity: 1;
 }
 
-
 #logout {
 	margin-right:0;
 	color:white;
@@ -100,18 +106,18 @@ a {
 }
 
 #trainers_wrapper {
-    display: flex;
+   display: flex;
     height: fit-content;
     flex-wrap: wrap;
-    margin-left: 2%;
-    margin-bottom: 5%;
+    width: 100%;
+    margin-left: 6%;
     border-radius: 6%;
-    margin-top: 2%;
+    margin-top: 12%;
 }
 
 #dettagli_wrapper{
     background-color: pink;
-    margin-right: 3%;
+    margin: 2%;
     text-align: center;
     display: flex;
     flex-direction: column;

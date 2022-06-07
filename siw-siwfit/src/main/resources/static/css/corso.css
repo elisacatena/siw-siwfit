@@ -5,6 +5,13 @@ body {
     width: 100%;
 }
 
+header {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -106,11 +113,12 @@ a {
 }
 
 #img_wrapper {
-	background-image: url(/images/corso.jpeg);
-    background-size: cover;
+	/*background-image: url(/images/corso.jpeg);*/
     width: 50%;
     height: 100%;
     background-position-y: 70%;
+   	background: linear-gradient(to right, transparent 75%, black), url(/images/corso1.jpg);
+   	 background-size: cover;
 }
 
 #dettagli_wrapper {

@@ -33,18 +33,14 @@
 				</nav>
 			</header>
 			
-			<h4>Elenco trainer</h4>
 			<div id="trainers_wrapper">
-				<ul>
-					<li th:each="trainer : ${trainers}">
-							<div id="dettagli_wrapper"> 
+				<div th:each="trainer : ${trainers}" id="dettagli_wrapper">
 								<div id="dettagli_trainer">
 									<span th:text="${trainer.nome}+ ' ' +${trainer.cognome}">trainer</span>
 									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}}" >DETTAGLI</a>
-								</div>
+								
 							</div>
-					</li>
-				</ul>
+					</div>
 			</div>
 
 		
