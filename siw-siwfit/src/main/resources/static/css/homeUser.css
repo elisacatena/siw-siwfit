@@ -3,6 +3,7 @@ body {
     margin: 0;
 	-webkit-font-smoothing: antialiased;
     width: 100%;
+    font-family: "Gilroy-HeavyItalic",sans-serif;
 }
 
 header {
@@ -51,7 +52,7 @@ a:hover {
     height: 500px;
     text-align: center;
     color: aliceblue;
-    margin-top: 12%;
+    margin-top: 10%;
 }
 
 .letter {
@@ -77,11 +78,6 @@ footer {
     color: aliceblue;
 }
 
-#info_user {
-	padding-left: 10%;
-    padding-top: 2.5%;
-}
-
 .tooltip {
   position: relative;
   display: inline-block;
@@ -92,7 +88,7 @@ footer {
   width:60px;
   border-radius:50%;
   background-size: cover;
-  margin-left: 200px;
+  margin-left: 350px;
   margin-top: 2%;
 }
 

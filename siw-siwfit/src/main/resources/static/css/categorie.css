@@ -3,6 +3,7 @@ body {
     margin: 0;
 	-webkit-font-smoothing: antialiased;
     width: 100%;
+    font-family: "Gilroy-HeavyItalic",sans-serif;
 }
 
 header {
@@ -92,7 +93,7 @@ ul {
   width:60px;
   border-radius:50%;
   background-size: cover;
-  margin-left: 200px;
+  margin-left: 350px;
   margin-top: 2%;
 }
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/categorieAdmin.css">
+	</head>
+	<body>
+	
+		<a th:href="@{/admin/crea_categoria}"> ➕</a>
+		
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
+					<li th:each="categoria : ${categorie}">
+						<a th:href="@{'/admin/dettagli_categoria'+'/'+${categoria.id}}" th:text="${categoria.nome}"></a>
+					</li>
+				</ul>
+			</div>
+			
+		
+		</div>
+		
+
+		
+		<footer>
+			<a th:href="@{/admin/homeadmin}">Home</a>
+		</footer>
+	</body>
+</html>

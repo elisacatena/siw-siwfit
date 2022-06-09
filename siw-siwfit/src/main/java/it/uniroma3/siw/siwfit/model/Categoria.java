@@ -3,6 +3,7 @@ package it.uniroma3.siw.siwfit.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Categoria {
 	@Column(nullable = false)
 	private String nome;
 	
-	@OneToMany//(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "categoria_id")
 	private List<Corso> corsi;
 	

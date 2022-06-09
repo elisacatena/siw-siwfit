@@ -3,27 +3,56 @@
 	<head>
 		<title th:text="${trainer.nome}+' '+${trainer.cognome}"></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/trainer.css">
 	</head>
 	
 	<body>
-		<div>
-			<h4>Dettagli trainer</h4>
+	
+		<header>
+				<nav>
+					<div>
+						<img id="logo" src="/images/logo.png">
+					</div>
+					<div id="container">
+						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
+						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
+						<a class="link_nav" th:href="@{/user/trainers}">Trainers</a>
+						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+					</div>
+					
+					<div class="tooltip">
+		  			<div class="tooltiptext">
+		  				<div>
+		  					<p th:text="${user.nome}"></p>
+		  					<p th:text="${user.cognome}"></p>
+		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+		  				</div>
+		  			</div>
+				</div>		
+				
+				</nav>
+			</header>
+			
+		<div id="wrapper">
+			<div id="img_wrapper">
+			</div>
+			<div id="dettagli_wrapper">
+				<h1 th:text="${trainer.nome}+' '+${trainer.cognome}"></h1>
+				<h4 th:text="${trainer.descrizione}"></h4>
+				
+					<div id="corsi_wrapper">
+						<div id="corso" th:each="corso : ${trainer.corsi}">
+								<div id="dettagli_corso">
+									<p id="difficolta" th:text="${corso.difficolta}">difficolta</p>
+									<p th:text="${corso.data}+' '+${corso.durata}">data</p>
+									<p th:text="${corso.nome}"></p>
+									<a id="link_corso" th:href="@{'/user/corso' + '/' + ${corso.id}}"	>ALLENATI ORA</a>			
+								</div>	
+						</div>
+					</div>
+			</div>
+			
 		</div>
-		<div>
-			<span th:text="${trainer.nome}">nome trainer</span>
-		</div>
-		<div>
-			<span th:text="${trainer.cognome}">cognome trainer</span>
-		</div>
-		
-		<ul>
-			<li th:each="corso : ${trainer.corsi}" >
-				<a th:href="@{'/user/corso'+'/'+${corso.id}}" th:text="${corso.nome}"> nome corso</a>
-			</li>
-		</ul>
-		
-		<footer>
-			<a th:href="@{/user/homeuser}">Home</a>
-		</footer>
+
 	</body>
 </html>

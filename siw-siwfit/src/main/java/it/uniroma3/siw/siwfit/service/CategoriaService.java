@@ -37,4 +37,9 @@ public class CategoriaService {
 	public boolean alreadyExists(Categoria categoria) {
         return this.categoriaRepository.existsByNome(categoria.getNome());
     }
+
+	@Transactional
+	public void deleteById(Long id) {
+		this.categoriaRepository.deleteById(id);
+	}
 }

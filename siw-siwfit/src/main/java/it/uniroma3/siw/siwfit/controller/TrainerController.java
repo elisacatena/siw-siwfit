@@ -43,6 +43,9 @@ public class TrainerController {
 	@GetMapping("/user/trainer/{id}")
 	public String getTrainer(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("trainer", this.trainerService.findById(id));	
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
+    	model.addAttribute("user", user);
 		return "user/trainer.html";
 	}
 	
