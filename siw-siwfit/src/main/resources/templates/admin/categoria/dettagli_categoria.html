@@ -2,24 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/categoriaAdmin.css">
 	</head>
 	<body>
-		<div>
-			<h4>Dettagli categoria</h4>
+	
+		<a th:href="@{/admin/crea_categoria}"> ➕</a>
+		
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
+					<li th:each="cat : ${categorie}">
+						<div th:if="${categoria.id} ==  ${cat.id}" id="selected">
+							<a th:href="@{'/admin/dettagli_categoria'+'/'+${cat.id}}" th:text="${cat.nome}"></a>
+						</div>
+						<div th:if="${categoria.id} !=  ${cat.id}">
+							<a th:href="@{'/admin/dettagli_categoria'+'/'+${cat.id}}" th:text="${cat.nome}"></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="dettagli">
+					<div id="modifiche-btn">
+						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >📝</a>
+						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">🗑</a>
+					</div>
+					<h4>Corsi di questa categoria:</h4>
+					<ul id="elencoCorsi">
+						<li th:each="corso : ${categoria.corsi}" id="corso">
+							<span th:text="${corso.nome}"></span>
+						</li>
+					</ul>
+			</div>
+		
 		</div>
-		<div>
-			<span th:text="${categoria.nome}">nome categoria</span>
-		</div>
-		<div>
-			<h4>Corsi di questa categoria:</h4>
-			<ul>
-				<li th:each="corso : ${categoria.corsi}">
-					<span th:text="${corso.nome}"></span>
-					<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >📝</a>
-					<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">🗑</a>
-				</li>
-			</ul>
-		</div>
+		
 		<footer>
 			<a th:href="@{/admin/homeadmin}">Home</a>
 		</footer>

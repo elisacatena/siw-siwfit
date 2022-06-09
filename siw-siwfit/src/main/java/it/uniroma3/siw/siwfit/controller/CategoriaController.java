@@ -113,6 +113,7 @@ public class CategoriaController {
 	@GetMapping("/admin/dettagli_categoria/{id}")
 	public String getDettagliCorso(@PathVariable Long id, Model model) {
 		model.addAttribute("categoria", this.categoriaService.findById(id));
+		model.addAttribute("categorie",this.categoriaService.findAll());
 		return "/admin/categoria/dettagli_categoria";
 	}
 

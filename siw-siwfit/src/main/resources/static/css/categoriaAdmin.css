@@ -15,6 +15,7 @@ body {
     border-radius: 6px;
     height: fit-content;
     display: flex;
+    color: white;
 }
 
 a {
@@ -23,7 +24,8 @@ a {
 }
 
 ul {
-    list-style:none;
+    list-style: none;
+    /* margin-left: 9%; */
     padding-inline-start: 0%;
 }
 
@@ -47,10 +49,36 @@ h3 {
     width: 100%;
 }
 
-#select {
+#dettagli {
     width: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+
+#elencoCorsi {
+    list-style:none;
+    padding-inline-start: 0%;
+}
+
+#modifiche-btn {
+    margin-top: 3%;
+}
+
+#corso {
+    margin-top: 2%;
+}
+
+h4 {
+    margin-bottom: 0%;
+}
+
+#selected {
+    border-left: solid #ff5d66;
+}
+
+#selected a {
+    color: #ff5d66;
 }
 
 
