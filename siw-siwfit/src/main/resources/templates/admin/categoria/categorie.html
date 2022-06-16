@@ -5,8 +5,8 @@
 		<link rel="stylesheet" href="/css/categorieAdmin.css">
 	</head>
 	<body>
-	
-		<a th:href="@{/admin/crea_categoria}"> ➕</a>
+
+		<h2>CATEGORIE</h2>
 		
 		<div id="wrapper">
 			<div id="elenco">
@@ -18,14 +18,20 @@
 			</div>
 			<div id="select">
 				<h3>SELEZIONA UNA CATEGORIA...</h3>
+				<div id="add" >
+					<div class="tooltip">
+						<a th:href="@{/admin/crea_categoria}">➕</a>
+						<div class="tooltiptext">
+							<span>Aggiungi</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		
 		</div>
 		
-
-		
-		<footer>
+		<div id="home">
 			<a th:href="@{/admin/homeadmin}">Home</a>
-		</footer>
+		</div>
 	</body>
 </html>
