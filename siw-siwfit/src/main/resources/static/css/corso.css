@@ -184,20 +184,22 @@ a {
 	background-color: #555;
     border-radius: 3px;
     padding: 1%;
-    width: 33%;
+    min-width: 33%;
     text-align: center;
     font-size: large;
     margin-right: 2%;
+    width: fit-content;
 }
 
 .si {
 	background-color: white;
     border-radius: 3px;
     padding: 1%;
-    width: 33%;
+    min-width: 33%;
     text-align: center;
     font-size: large;
     margin-right: 2%;  
+    width: fit-content;
 }
 
 .si a {
