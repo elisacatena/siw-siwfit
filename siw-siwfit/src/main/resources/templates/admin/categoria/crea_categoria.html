@@ -2,22 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/creaCategoriaAdmin.css">
 	</head>
 	
 	<body>
-		<h1>Aggiungi una categoria</h1>
-		<form th:action="@{/admin/new_categoria}" method="POST" th:object="${categoria}">
-			<div th:if="${#fields.hasGlobalErrors()}">
-				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		<div id="add_wrapper">
+			<div id="image_wrapper">
+	   
 			</div>
-			<div>
-				<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			<div id="form_wrapper">
+				<h2>AGGIUNGI UNA CATEGORIA</h2>
+				<div id="form">
+					<form th:action="@{/admin/new_categoria}" method="POST" th:object="${categoria}">
+						<div th:if="${#fields.hasGlobalErrors()}">
+							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+						</div>
+						<div>
+							<span><strong>Nome:</strong></span> <span><input type="text" th:field="*{nome}" /></span>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+						</div>
+						<div id="conferma">
+							<button type="submit">CONFERMA</button>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div>
-				<span><button type="submit">CONFERMA</button></span>
-			</div>
-		</form>
+		</div>
+
 	</body>
 </html>
-

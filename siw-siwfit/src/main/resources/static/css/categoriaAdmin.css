@@ -38,9 +38,12 @@ li:last-child {
 }
 
 #elenco {
-	border-right: solid #2a2a2e 3px;
+    border-right: solid #2a2a2e 3px;
     width: 19%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h3 {
@@ -63,6 +66,8 @@ h3 {
 
 #modifiche-btn {
     margin-top: 3%;
+    display: flex;
+    align-items: center;
 }
 
 #corso {
@@ -80,5 +85,76 @@ h4 {
 #selected a {
     color: #ff5d66;
 }
+
+h2 {
+    text-align: center;
+    color:#ff5d66;
+    margin-top: 3%;
+}
+
+#home {
+    text-align: center;
+    margin-top: 8%;
+}
+
+#home a {
+    color: #ff5d66;
+}
+
+#home a:hover {
+    text-decoration: none;
+	color: white;
+}
+
+#add {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: end;
+    margin-bottom: 1%;
+    margin-right: 2%;
+    justify-content: flex-end;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    width: 4%;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #ff5d66;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 154%;
+    left: 67%;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ff5d66 transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  #elenco ul {
+    width: 100%;
+  }
+
 
 

@@ -5,9 +5,7 @@
 		<link rel="stylesheet" href="/css/categoriaAdmin.css">
 	</head>
 	<body>
-	
-		<a th:href="@{/admin/crea_categoria}"> ➕</a>
-		
+		<h2>CATEGORIA</h2>	
 		<div id="wrapper">
 			<div id="elenco">
 				<ul>
@@ -23,8 +21,12 @@
 			</div>
 			<div id="dettagli">
 					<div id="modifiche-btn">
-						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >📝</a>
-						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">🗑</a>
+						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >
+							<img src="/images/notesLogo.png" style="width: 79%;">
+						</a>
+						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">
+							<img src="/images/deleteLogo.png">
+						</a>
 					</div>
 					<h4>Corsi di questa categoria:</h4>
 					<ul id="elencoCorsi">
@@ -32,12 +34,20 @@
 							<span th:text="${corso.nome}"></span>
 						</li>
 					</ul>
+					<div id="add" >
+						<div class="tooltip">
+							<a th:href="@{/admin/crea_categoria}">➕</a>
+							<div class="tooltiptext">
+								<span>Aggiungi</span>
+							</div>
+						</div>
+					</div>
 			</div>
 		
 		</div>
 		
-		<footer>
+		<div id="home">
 			<a th:href="@{/admin/homeadmin}">Home</a>
-		</footer>
+		</div>
 	</body>
 </html>
