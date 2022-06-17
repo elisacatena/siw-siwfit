@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.siwfit.controller.validator.CategoriaValidator;
 import it.uniroma3.siw.siwfit.model.Categoria;
-import it.uniroma3.siw.siwfit.model.Trainer;
 import it.uniroma3.siw.siwfit.model.User;
 import it.uniroma3.siw.siwfit.service.CategoriaService;
 import it.uniroma3.siw.siwfit.service.CredenzialiService;
@@ -53,12 +52,12 @@ public class CategoriaController {
 	
 	@GetMapping("/admin/crea_categoria")
 	public String addCategoriaForm(Model model) {
-		model.addAttribute("categoria", new Trainer());
+		model.addAttribute("categoria", new Categoria());
 		return "admin/categoria/crea_categoria.html";
 	}
 	
 	@PostMapping("/admin/new_categoria") 
-	public String addTrainer(@Valid @ModelAttribute("categoria") Categoria categoria, BindingResult bindingResult, Model model) {		
+	public String addCategoria(@Valid @ModelAttribute("categoria") Categoria categoria, BindingResult bindingResult, Model model) {		
 		this.categoriaValidator.validate(categoria, bindingResult);
 		if(!bindingResult.hasErrors()) {     
 			this.categoriaService.save(categoria);
@@ -71,13 +70,13 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/admin/modifica_categoria/{id}")
-	public String modificaTrainerForm(@PathVariable("id")  Long id, Model model) {
+	public String modificaCategoriaForm(@PathVariable("id")  Long id, Model model) {
 		model.addAttribute("categoria", this.categoriaService.findById(id));
 		return "admin/categoria/modifica_categoria.html";
 	}
 	
 	@PostMapping("/admin/edit_categoria/{id}") 
-	public String modificaTrainer(@PathVariable("id")  Long id, @Valid @ModelAttribute("categoria") Categoria categoria, BindingResult bindingResult, Model model) {		
+	public String modificaCategoria(@PathVariable("id")  Long id, @Valid @ModelAttribute("categoria") Categoria categoria, BindingResult bindingResult, Model model) {		
 //		this.trainerValidator.validate(trainer, bindingResult);
 //		if (!bindingResult.hasErrors()){ // se i dati sono corretti
 //			Trainer vecchioTrainer = this.trainerService.findById(id);
@@ -105,13 +104,13 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/admin/delete_categoria/{id}")
-	public String deleteTrainer(@PathVariable Long id) {
+	public String deleteCategoria(@PathVariable Long id) {
 		this.categoriaService.deleteById(id);
 		return "redirect:/admin/categorie";
 	}
 	
 	@GetMapping("/admin/dettagli_categoria/{id}")
-	public String getDettagliCorso(@PathVariable Long id, Model model) {
+	public String getDettagliCategoria(@PathVariable Long id, Model model) {
 		model.addAttribute("categoria", this.categoriaService.findById(id));
 		model.addAttribute("categorie",this.categoriaService.findAll());
 		return "/admin/categoria/dettagli_categoria";

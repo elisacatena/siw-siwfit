@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-</head>
-<body>
-	<div>
-		<h4>Lista dei trainer</h4>
-	</div>
-	
-	<a th:href="@{/admin/crea_trainer}"> ➕</a>
-	
-	<div>
-		<ul>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/categorieAdmin.css">
+	</head>
+	<body>
+
+		<h2>TRAINERS</h2>
+		
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
 			<li th:each="trainer : ${trainers}">
 				<a th:href="@{'/admin/dettagli_trainer'+'/'+${trainer.id}}" th:text="${trainer.nome}+' '+${trainer.cognome}"></a>
-				<a th:href="@{'/admin/modifica_trainer'+'/'+${trainer.id}}">📝</a>
-				<a th:href="@{'/admin/delete_trainer'+'/'+${trainer.id}}">🗑</a>
 			</li>
 		</ul>
-	</div>
-	<footer>
-		<a th:href="@{/admin/homeadmin}">Home</a>
-	</footer>
-</body>
+			</div>
+			<div id="select">
+				<h3>SELEZIONA UN TRAINER...</h3>
+				<div id="add" >
+					<div class="tooltip">
+						<a th:href="@{/admin/crea_trainer}">➕</a>
+						<div class="tooltiptext">
+							<span>Aggiungi</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="home">
+			<a th:href="@{/admin/homeadmin}">Home</a>
+		</div>
+	</body>
 </html>

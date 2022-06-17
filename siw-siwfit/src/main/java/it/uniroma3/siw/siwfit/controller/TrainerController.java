@@ -115,8 +115,9 @@ public class TrainerController {
 	}
 	
 	@GetMapping("/admin/dettagli_trainer/{id}")
-	public String getDettagliCorso(@PathVariable Long id, Model model) {
+	public String getDettagliTrainer(@PathVariable Long id, Model model) {
 		model.addAttribute("trainer", this.trainerService.findById(id));
+		model.addAttribute("trainers", this.trainerService.findAll());
 		return "/admin/trainer/dettagli_trainer";
 	}
 	

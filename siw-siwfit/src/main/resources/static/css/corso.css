@@ -115,13 +115,12 @@ a {
 }
 
 #img_wrapper {
-	/*background-image: url(/images/corso.jpeg);*/
     width: 50%;
     height: 100%;
     background-position-y: 70%;
-   	background: linear-gradient(to right, transparent 75%, black), url(/images/corso1.jpg);
+   	background: linear-gradient(to right, transparent 75%, black), url(/images/corso.jpg);
    	background-size: cover;
-    background-position: center top 40%;
+    background-position: center top 30%;
 }
 
 #dettagli_wrapper {

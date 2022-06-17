@@ -136,7 +136,7 @@ public class CorsoController {
 	}
 	
 	@PostMapping("/admin/edit_corso/{id}") 
-	public String modificaTrainer(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, BindingResult bindingResult, Model model) {		
+	public String modificaCorso(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, BindingResult bindingResult, Model model) {		
 		Corso c = corso;
 		this.corsoService.deleteById(id);
 		this.corsoValidator.validate(c, bindingResult);
@@ -151,7 +151,7 @@ public class CorsoController {
 	}
 	
 	@GetMapping("/admin/delete_corso/{id}")
-	public String deleteTrainer(@PathVariable Long id) {
+	public String deleteCorso(@PathVariable Long id) {
 		this.corsoService.deleteById(id);
 		return "redirect:/admin/corsi";
 	}
@@ -159,6 +159,7 @@ public class CorsoController {
 	@GetMapping("/admin/dettagli_corso/{id}")
 	public String getDettagliCorso(@PathVariable Long id, Model model) {
 		model.addAttribute("corso", this.corsoService.findById(id));
+		model.addAttribute("corsi", this.corsoService.findAll());
 		return "/admin/corso/dettagli_corso";
 	}
 

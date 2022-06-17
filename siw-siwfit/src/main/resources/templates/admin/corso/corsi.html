@@ -2,25 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/categorieAdmin.css">
 	</head>
 	<body>
-		<div>
-			<h4>Lista dei corsi</h4>
+
+		<h2>CORSI</h2>
+		
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
+					<li th:each="corso : ${corsi}">
+						<a th:href="@{'/admin/dettagli_corso'+'/'+${corso.id}}" th:text="${corso.nome}"></a>
+					</li>
+				</ul>
+			</div>
+			<div id="select">
+				<h3>SELEZIONA UN CORSO...</h3>
+				<div id="add" >
+					<div class="tooltip">
+						<a th:href="@{/admin/crea_corso}">➕</a>
+						<div class="tooltiptext">
+							<span>Aggiungi</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		
 		</div>
 		
-		<a th:href="@{/admin/crea_corso}"> ➕</a>
-		
-		<div>
-			<ul>
-				<li th:each="corso: ${corsi}">
-					<a th:href="@{'/admin/dettagli_corso'+'/'+${corso.id}}" th:text="${corso.nome}"></a>
-					<a th:href="@{'/admin/modifica_corso'+'/'+${corso.id}}" >📝</a>
-					<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}">🗑</a>
-				</li>
-			</ul>
-		</div>
-		<footer>
+		<div id="home">
 			<a th:href="@{/admin/homeadmin}">Home</a>
-		</footer>
+		</div>
 	</body>
 </html>

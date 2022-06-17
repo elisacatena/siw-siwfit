@@ -2,33 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/form_creazione.css">
 	</head>
 	
 	<body>
-		<h1>Aggiungi un trainer</h1>
-		<form th:action="@{/admin/new_trainer}" method="POST" th:object="${trainer}">
-			<div th:if="${#fields.hasGlobalErrors()}">
-				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+	
+		<div id="buttons_wrapper">
+			<a th:href="@{/admin/trainers}">
+				<button id="button">BACK</button>
+			</a>
+			<a th:href="@{/admin/homeadmin}">
+				<button id="button">HOME</button>
+			</a>
+		</div>
+		
+		<div>
+			<div id="wrapper">
+				<div id="aggiungi">
+					<h2>AGGIUNGI UN TRAINER</h2>
+				</div>
 			</div>
-			<div>
-				<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			
+			<div id="form_wrapper">
+			
+				<form th:action="@{/admin/new_trainer}" method="POST" th:object="${trainer}">
+							<div th:if="${#fields.hasGlobalErrors()}">
+								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+							</div>
+							<div>
+								<span>
+									<input type="text" th:field="*{nome}" placeholder="Nome..." required/>
+								</span>
+								<span>
+									<input type="text" th:field="*{cognome}" placeholder="Cognome..." required/>
+								</span>
+								<span>
+									<input type="text" th:field="*{descrizione}" placeholder="Descrizione..." required/>
+								</span>
+							</div>
+							<div>
+								<button id="conferma" type="submit">CONFERMA</button>
+							</div>
+						</form>
+			
 			</div>
-			<div>
-				<span>Cognome:</span> <span><input type="text"
-					th:field="*{cognome}" /></span> <span
-					th:if="${#fields.hasErrors('cognome')}"
-					th:errors="*{cognome}"></span>
-			</div>
-			<div>
-				<span>Descrizione:</span>
-				<span><input type="text" th:field="*{descrizione}"/></span>
-				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-			</div>
-			<div>
-				<span><button type="submit">CONFERMA</button></span>
-			</div>
-		</form>
+		</div>
+
 	</body>
 </html>
-

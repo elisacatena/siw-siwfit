@@ -2,65 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/form_creazione.css">
 	</head>
 	
 	<body>
-		<h1>Aggiungi un corso</h1>
-		<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}">
-			<div th:if="${#fields.hasGlobalErrors()}">
-				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+	
+		<div id="buttons_wrapper">
+			<a th:href="@{/admin/corsi}">
+				<button id="button">BACK</button>
+			</a>
+			<a th:href="@{/admin/homeadmin}">
+				<button id="button">HOME</button>
+			</a>
+		</div>
+		
+		<div>
+		
+			<div id="wrapper">
+				<div id="aggiungi">
+					<h2>AGGIUNGI UNA CATEGORIA</h2>
+				</div>
 			</div>
-			<div>
-				<span>Nome:</span> <span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			
+			<div id="form_wrapper">
+			
+				<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}">
+							<div th:if="${#fields.hasGlobalErrors()}">
+								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+							</div>
+							<div id="corso">
+								<span>
+									<input class="input" type="text" th:field="*{nome}" placeholder="Nome..." required/>
+								</span>
+								
+								<span>
+									<input class="input" type="date" th:field="*{data}" placeholder="Data..." required/>
+								</span>
+								
+								<div>
+									<span>Difficoltà:</span>
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="facile" value="facile"/>
+									<label for="facile">Facile </label>
+										
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="intermedio" value="intermedio"/>
+									<label for="intermedio">Intermedio</label>
+									
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="avanzato" value="avanzato"/>
+									<label for="avanzato">Avanzato</label>
+									
+									<span th:if="${#fields.hasErrors('difficolta')}" th:errors="*{difficolta}"></span>
+								</div>
+								
+								<div>
+									<label for="durata">Scegli una durata:</label>
+
+									<select name="" id="durata">
+										  <option value="volvo">Volvo</option>
+										  <option value="saab">Saab</option>
+										  <option value="mercedes">Mercedes</option>
+										  <option value="audi">Audi</option>
+									</select>
+							  
+								<span>
+									<input class="input" type="text" th:field="*{descrizione}" placeholder="Descrizione..." required/>
+								</span>
+								
+								<span>
+									<input class="input" type="text" th:field="*{sala}" placeholder="Sala..." required/>
+								</span>
+								
+								<span>
+									<input class="input" type="text" th:field="*{numeroMaxPersone}" placeholder="Numero max persone..." required/>
+								</span>
+								
+								<div>Trainer: 
+									<input class="input" type = 'radio' th:field = '*{trainer}' th:each="trainer : ${trainers}"
+									th:text="${trainer.nome} + ' ' + ${trainer.cognome}" th:value="${trainer.id}"/>
+								</div>
+								<div>Categoria: 
+									<input class="input" type = 'radio' th:field = '*{categoria}' th:each="categoria : ${categorie}"
+									th:text="${categoria.nome} " th:value="${categoria.id}"/>
+								</div>
+								
+							</div>
+							<div>
+								<button id="conferma" type="submit">CONFERMA</button>
+							</div>
+						</form>
+			
 			</div>
-			<div>
-				<span>Data:</span> <span><input type="text"
-					th:field="*{data}" /></span> <span
-					th:if="${#fields.hasErrors('data')}"
-					th:errors="*{data}"></span>
-			</div>
-			<div>
-				<span>Difficoltà:</span>
-				<input type = 'radio' th:field= '*{difficolta}' id="facile" value="😎facile"/>
-				<label for="facile">😎Facile </label>
-					
-				<input type = 'radio' th:field= '*{difficolta}' id="intermedio" value="🥵intermedio"/>
-				<label for="intermedio">🥵Intermedio</label>
-				
-				<input type = 'radio' th:field= '*{difficolta}' id="avanzato" value="🔥avanzato"/>
-				<label for="avanzato">🔥Avanzato</label>
-				
-				<span th:if="${#fields.hasErrors('difficolta')}" th:errors="*{difficolta}"></span>
-			</div>
-			<div>
-				<span>Durata:</span> <span><input type="text" th:field="*{durata}" /></span>
-				<span th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
-			</div>
-			<div>
-				<span>Descrizione:</span> <span><input type="text" th:field="*{descrizione}" /></span>
-				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-			</div>
-			<div>
-				<span>Sala:</span> <span><input type="text" th:field="*{sala}" /></span>
-				<span th:if="${#fields.hasErrors('sala')}" th:errors="*{sala}"></span>
-			</div>
-			<div>
-				<span>Numero masssimo di persone:</span> <span><input type="text" th:field="*{numeroMaxPersone}" /></span>
-				<span th:if="${#fields.hasErrors('numeroMaxPersone')}" th:errors="*{numeroMaxPersone}"></span>
-			</div>
-			<div>Trainer: 
-				<input type = 'radio' th:field = '*{trainer}' th:each="trainer : ${trainers}"
-				th:text="${trainer.nome} + ' ' + ${trainer.cognome}" th:value="${trainer.id}"/>
-			</div>
-			<div>Categoria: 
-				<input type = 'radio' th:field = '*{categoria}' th:each="categoria : ${categorie}"
-				th:text="${categoria.nome} " th:value="${categoria.id}"/>
-			</div>
-			<div>
-				<span><button type="submit">CONFERMA</button></span>
-			</div>
-		</form>
+		</div>
+
 	</body>
 </html>
 

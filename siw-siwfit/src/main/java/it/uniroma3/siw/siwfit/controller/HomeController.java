@@ -7,23 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import it.uniroma3.siw.siwfit.controller.validator.UserValidator;
 import it.uniroma3.siw.siwfit.model.User;
-import it.uniroma3.siw.siwfit.service.CorsoService;
 import it.uniroma3.siw.siwfit.service.CredenzialiService;
-import it.uniroma3.siw.siwfit.service.UserService;
 
 @Controller
 public class HomeController {
-
-	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private UserValidator userValidator;
-
-	@Autowired
-	private CorsoService corsoService;
 	
 	@Autowired
 	private CredenzialiService credenzialiService;

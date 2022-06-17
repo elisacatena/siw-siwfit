@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-</head>
-<body>
-	<div>
-		<h4>Dettagli trainer</h4>
-	</div>
-	<div>
-		<span th:text="${corso.nome}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.data}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.difficolta}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.durata}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.descrizione}">descrizione trainer</span>
-	</div>
-	<div>
-		<span th:text="${corso.sala}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.numeroMaxPersone}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.trainer.nome}">nome corso</span>
-	</div>
-	<div>
-		<span th:text="${corso.categoria.nome}">nome corso</span>
-	</div>
-	
-	<!-- eventualmente aggiungere lista iscritti -->
-	
-	<footer>
-		<a th:href="@{/admin/homeadmin}">Home</a>
-	</footer>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/categoriaAdmin.css">
+	</head>
+	<body>
+		<h2>CORSO</h2>	
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
+					<li th:each="cor : ${corsi}">
+						<div th:if="${corso.id} ==  ${cor.id}" id="selected">
+							<a th:href="@{'/admin/dettagli_corso'+'/'+${cor.id}}" th:text="${cor.nome}"></a>
+						</div>
+						<div th:if="${corso.id} !=  ${cor.id}">
+							<a th:href="@{'/admin/dettagli_corso'+'/'+${cor.id}}" th:text="${cor.nome}"></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="dettagli">
+					<div id="modifiche-btn">
+						<a th:href="@{'/admin/modifica_corso'+'/'+${corso.id}}" >
+							<img src="/images/writing.png" style="width: 70%;">
+						</a>
+						<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}">
+							<img src="/images/trash.png" style="width: 65%;">
+						</a>
+					</div>
+					
+					<div id="info">
+						<span><strong>Nome:</strong><span th:text="${corso.nome}"></span></span>
+					
+						<span><strong>Data:</strong><span th:text="${corso.data}"></span></span>
+					
+						<span><strong>Difficoltà:</strong><span th:text="${corso.difficolta}"></span></span>
+					
+						<span><strong>Durata:</strong><span th:text="${corso.durata}"></span></span>
+					
+						<span><strong>Descrizione:</strong><span th:text="${corso.descrizione}"></span></span>
+					
+						<span><strong>Sala:</strong><span th:text="${corso.sala}"></span></span>
+					
+						<span><strong>Numero massimo di persone:</strong><span th:text="${corso.numeroMaxPersone}"></span></span>
+					
+						<span><strong>Trainer:</strong><span th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></span></span>
+		
+						<span><strong>Categoria:</strong><span th:text="${corso.categoria.nome}"></span></span>
+					</div>
+					
+					<div id="add" >
+						<div class="tooltip">
+							<a th:href="@{/admin/crea_corso}">➕</a>
+							<div class="tooltiptext">
+								<span>Aggiungi</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		</div>
+		
+		<div id="home">
+			<a th:href="@{/admin/homeadmin}">Home</a>
+		</div>
+	</body>
 </html>
+
