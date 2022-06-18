@@ -2,11 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="/css/categorieAdmin.css">
+		<link rel="stylesheet" href="/css/admin/management.css">
 	</head>
 	<body>
 
-		<h2>TRAINERS</h2>
+		<div id="container">
+			<h2>TRAINERS</h2>	
+			<div id="button_wrapper">
+				<a th:href="@{/admin/homeadmin}">
+					<button id="button">HOME
+					</button></a>
+			</div>
+		</div>
 		
 		<div id="wrapper">
 			<div id="elenco">
@@ -30,8 +37,5 @@
 		
 		</div>
 		
-		<div id="home">
-			<a th:href="@{/admin/homeadmin}">Home</a>
-		</div>
 	</body>
 </html>

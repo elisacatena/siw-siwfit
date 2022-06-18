@@ -7,17 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>    
     <body>
-        <header>
-           <img src="/images/logo.png">
-        </header>
         
         <div id="login_wrapper">
             <div id="image_wrapper">
 
             </div>
             <div id="form_wrapper">
+            	<img src="/images/logo.png">
                 <h1>Accedi al tuo account</h1>
-                <div id="form">
+                <div>
                     <form th:action="@{/login}" method="POST">
                         <div class="input_form"> 
                             <span><input type="text" placeholder="username" name="username"/></span>
@@ -27,11 +25,13 @@
                             <span><input type="password" placeholder="password" name="password"/></span>
                         </div>
 
-                        <div id="login_butt">
-                            <button type="submit">LOGIN</button>
-                        </div>
-                        <div id="login_butt">
-                            <a th:href="@{/register}">REGISTRATI</a>
+ 
+                        <div id="submit">
+								<button id="conferma" type="submit">LOGIN</button>
+							</div>
+							
+                        <div id="register">
+                            Non hai ancora un account? <a th:href="@{/register}">Resgistrati ora</a>
                         </div>
                     </form>
                 </div>

@@ -1,0 +1,111 @@
+body {
+	background-color: black;
+	font-family: "Gilroy-Bold", sans-serif;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+#buttons_wrapper {
+	text-align: end;
+	margin: 2%;
+}
+
+#button {
+	background-color: #ff5d66;
+	padding: 0.7%;
+	border: unset;
+	box-shadow: 0 0 10px 1px #ff5d66;
+	margin-right: 2%;
+	cursor: pointer;
+}
+
+#button:hover {
+	background-color: white;
+	cursor: pointer;
+	color: #ff5d66;
+}
+
+#wrapper {
+	background-color: #ff5d66;
+	height: 400px;
+	width: 70%;
+	margin: auto;
+	margin-top: 5%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#aggiungi {
+	width: 47%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#form_wrapper {
+	background-image: url("/images/form_categoria.jpg");
+	top: 14%;
+	position: absolute;
+	height: 73%;
+	width: 32%;
+	left: 20%;
+	text-align: center;
+	background-size: cover;
+	box-shadow: 1px 1px 100px 9px #525252;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input {
+	height: 25px;
+	width: 45%;
+	margin: 3%;
+}
+
+::placeholder {
+	font-weight: bold;
+}
+
+#conferma {
+	background-color: #ff5d66;
+	padding: 2%;
+	border: unset;
+	box-shadow: 0 0 10px 1px #ff5d66;
+	margin: 2%;
+}
+
+#conferma:hover {
+	background-color: white;
+	cursor: pointer;
+	color: #ff5d66;
+}
+
+#conf_btn {
+	padding: 2%
+}
+
+.input {
+	margin: 3%;
+	height: unset;
+	width: unset;
+}
+
+form {
+	color: white;
+	width: 100%;
+}
+
+#corso {
+	display: flex;
+	flex-direction: column;
+}
+
+.select {
+	margin: 2%;
+}

@@ -41,15 +41,16 @@
 				</div>
 				<div id="corsi_wrapper">
 					<div id="corso" th:each="corso : ${categoria.corsi}">
-						<div id="dettagli_corso">
-							<p th:text="${corso.difficolta}">difficolta</p>
-							<p th:text="${corso.data}+' '+${corso.durata}">data</p>
-							<p th:text="${corso.nome}"></p>
-							<a
-							th:href="@{'/user/corso' + '/' + ${corso.id}}"	>ALLENATI ORA</a>
-							
+						<div id="sfondo">
+							<div id="dettagli_corso">
+								<p th:text="${corso.difficolta}">difficolta</p>
+								<p th:text="${corso.data}+' '+${corso.durata}">data</p>
+								<p th:text="${corso.nome}"></p>
+								<a
+								th:href="@{'/user/corso' + '/' + ${corso.id}}"	>ALLENATI ORA</a>
+								
+							</div>
 						</div>
-						
 					</div>
 				</div>
 			</li>

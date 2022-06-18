@@ -1,0 +1,186 @@
+body {
+	background-color: black;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	font-family: "Gilroy-HeavyItalic", sans-serif;
+}
+
+#wrapper {
+	border: solid #2a2a2e;
+	width: 80%;
+	margin: auto;
+	background: #141414;
+	margin-top: 5%;
+	border-radius: 6px;
+	height: fit-content;
+	display: flex;
+	color: white;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+	/* margin-left: 9%; */
+	padding-inline-start: 0%;
+}
+
+li {
+	margin-top: 10%;
+}
+
+li:last-child {
+	margin-bottom: 10%;
+}
+
+#elenco {
+	border-right: solid #2a2a2e 3px;
+	width: 19%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h3 {
+	color: #2a2a2e;
+	text-align: center;
+	width: 100%;
+}
+
+#dettagli {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+#elencoCorsi {
+    list-style: circle;
+    padding-inline-start: 0%;
+    text-align: center;
+}
+
+#modifiche-btn {
+	margin-top: 3%;
+	display: flex;
+	align-items: center;
+}
+
+#corso {
+	margin-top: 3%;
+}
+
+h4 {
+	margin-bottom: 0%;
+}
+
+#selected {
+	border-left: solid #ff5d66;
+}
+
+#selected a {
+	color: #ff5d66;
+}
+
+h2 {
+    text-align: end;
+    color: #ff5d66;
+    margin: unset;
+    width: 50%;
+    margin-left: 3%;
+}
+
+#add {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	text-align: end;
+	margin-bottom: 1%;
+	margin-right: 2%;
+	justify-content: flex-end;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	width: 4%;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #ff5d66;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	top: 154%;
+	left: 67%;
+	margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #ff5d66 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+#elenco ul {
+	width: 100%;
+}
+
+#info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	margin-top: 2%;
+}
+
+#info span {
+    margin: 1%;
+    width: 50%;
+    text-align: center;
+}
+
+#button {
+    background-color: #ff5d66;
+    padding: 23%;
+    border: unset;
+    box-shadow: 0 0 10px 1px #ff5d66;
+    cursor: pointer;
+}
+
+#button:hover {
+	background-color: white;
+	cursor: pointer;
+	color: #ff5d66;
+}
+
+#button_wrapper {
+   text-align: end;
+    margin-left: 33%;
+}
+
+#container {
+	display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 3%;
+}
