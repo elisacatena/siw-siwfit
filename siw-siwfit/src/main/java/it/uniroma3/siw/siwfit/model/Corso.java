@@ -28,13 +28,14 @@ public class Corso {
 	
 	private String durata;
 	
+	@Column(columnDefinition="TEXT")
 	private String descrizione;
 	
 	private String sala;
 	
 	private int numeroMaxPersone;
 	
-	@ManyToOne//(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Trainer trainer;
 	
 	@ManyToOne

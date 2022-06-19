@@ -137,16 +137,16 @@ public class CorsoController {
 	
 	@PostMapping("/admin/edit_corso/{id}") 
 	public String modificaCorso(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, BindingResult bindingResult, Model model) {		
-		Corso c = corso;
-		this.corsoService.deleteById(id);
-		this.corsoValidator.validate(c, bindingResult);
-		if (!bindingResult.hasErrors()){ // se i dati sono corretti
-			this.corsoService.save(c);
-			model.addAttribute("corso", c);
+		this.corsoValidator.validate(corso, bindingResult);
+		if (!bindingResult.hasErrors()) { 
+			this.corsoService.save(corso);
+			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";
 		} 
 		else {
-			return "/admin/corso/modifica_corso.html"; // ci sono errori, torna alla form iniziale
+			model.addAttribute("trainers", this.trainerService.findAll());
+			model.addAttribute("categorie", this.categoriaService.findAll());
+			return "/admin/corso/modifica_corso.html"; 
 		}
 	}
 	

@@ -77,29 +77,14 @@ public class CategoriaController {
 	
 	@PostMapping("/admin/edit_categoria/{id}") 
 	public String modificaCategoria(@PathVariable("id")  Long id, @Valid @ModelAttribute("categoria") Categoria categoria, BindingResult bindingResult, Model model) {		
-//		this.trainerValidator.validate(trainer, bindingResult);
-//		if (!bindingResult.hasErrors()){ // se i dati sono corretti
-//			Trainer vecchioTrainer = this.trainerService.findById(id);
-//			vecchioTrainer.setId(trainer.getId());
-//			vecchioTrainer.setNome(trainer.getNome());
-//			vecchioTrainer.setCognome(trainer.getCognome());
-//			this.trainerService.save(vecchioTrainer);
-//			model.addAttribute("trainer", vecchioTrainer);
-//			return "redirect:/admin/trainers";
-//			} 
-//		else {
-//			return "admin/trainer/modifica_trainer.html"; // ci sono errori, torna alla form iniziale
-//		}
-		Categoria c = categoria;
-		this.categoriaService.deleteById(id);
-		this.categoriaValidator.validate(c, bindingResult);
-		if (!bindingResult.hasErrors()){ // se i dati sono corretti
-			this.categoriaService.save(c);
-			model.addAttribute("categoria", c);
+		this.categoriaValidator.validate(categoria, bindingResult);
+		if (!bindingResult.hasErrors()) { 
+			this.categoriaService.save(categoria);
+			model.addAttribute("categoria", categoria);
 			return "redirect:/admin/categorie";
 		} 
 		else {
-			return "admin/categoria/modifica_categoria.html"; // ci sono errori, torna alla form iniziale
+			return "admin/categoria/modifica_categoria.html";
 		}
 	}
 	

@@ -20,10 +20,6 @@ public class CorsoService {
 		return corsoRepository.findById(id).get();
 	}
 
-	public boolean alreadyExists(Corso corso) {
-		return this.corsoRepository.existsById(corso.getId());
-	}
-
 	@Transactional
 	public void save(Corso c) {
 		this.corsoRepository.save(c);
@@ -37,11 +33,12 @@ public class CorsoService {
 		return corsi;
 	}
 
+	@Transactional
 	public void deleteById(Long id) {
 		this.corsoRepository.deleteById(id);
 	}
 
-	public boolean alreadyExistsByNome(Corso corso) {
-		return this.corsoRepository.existsByNome(corso.getNome());
+	public boolean alreadyExists(Corso corso) {
+		return this.corsoRepository.existsByNomeAndDataAndDifficoltaAndDurataAndDescrizioneAndSalaAndNumeroMaxPersoneAndTrainerAndCategoria(corso.getNome(), corso.getData(), corso.getDifficolta(), corso.getDurata(), corso.getDescrizione(), corso.getSala(), corso.getNumeroMaxPersone(), corso.getTrainer(), corso.getCategoria());
 	}
 }

@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,8 +21,7 @@ public class Categoria {
 	@Column(nullable = false)
 	private String nome;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "categoria_id")
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	private List<Corso> corsi;
 	
 	public Categoria() {

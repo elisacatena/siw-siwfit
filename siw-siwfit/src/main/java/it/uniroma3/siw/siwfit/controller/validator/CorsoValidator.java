@@ -21,7 +21,7 @@ public class CorsoValidator implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		if(this.corsoService.alreadyExistsByNome((Corso)target)) {
+		if(this.corsoService.alreadyExists((Corso)target)) {
 			errors.reject("corso.duplicato");
 		}
 	}
