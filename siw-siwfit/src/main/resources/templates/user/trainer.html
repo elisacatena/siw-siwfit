@@ -33,21 +33,35 @@
 				</nav>
 			</header>
 			
+			
+			
 		<div id="wrapper">
 			<div id="img_wrapper">
 			</div>
 			<div id="dettagli_wrapper">
 				<h1 th:text="${trainer.nome}+' '+${trainer.cognome}"></h1>
-				<h4 th:text="${trainer.descrizione}"></h4>
+				<div id="info_trainer" th:text="${trainer.descrizione}"></div>
 				
 					<div id="corsi_wrapper">
-						<div id="corso" th:each="corso : ${trainer.corsi}">
+					
+						<div th:if="${trainer.corsi.size()}==0" id="no_corsi">
+							<h1>😣</h1>
+							<h3>
+								In questo momento non ci sono classi del tuo trainer preferito
+							</h3>
+							<div id="text">
+								Ma non smettere di allenarti! Scegline subito un altro
+							</div>
+							<a id="allenati" th:href="@{/user/trainers}">Trova un altro trainer</a>
+						</div>
+						
+						<div id="corso" th:each="corso : ${trainer.corsi}"  th:unless="${trainer.corsi.size()}==0">
+							<div id="sfondo">
 								<div id="dettagli_corso">
-									<p id="difficolta" th:text="${corso.difficolta}">difficolta</p>
-									<p th:text="${corso.data}+' '+${corso.durata}">data</p>
-									<p th:text="${corso.nome}"></p>
-									<a id="link_corso" th:href="@{'/user/corso' + '/' + ${corso.id}}"	>ALLENATI ORA</a>			
+									<p id="nome" th:text="${corso.nome}"></p>
+									<a id="link_corso" th:href="@{'/user/corso' + '/' + ${corso.id}}">Scopri di più</a>			
 								</div>	
+							</div>
 						</div>
 					</div>
 			</div>

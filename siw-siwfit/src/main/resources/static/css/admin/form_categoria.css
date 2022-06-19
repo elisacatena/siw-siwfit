@@ -6,6 +6,10 @@ body {
     width: 100%;
 }
 
+#error {
+	color: #ff5d66;
+}
+
 a {
 	text-decoration: none;
 }

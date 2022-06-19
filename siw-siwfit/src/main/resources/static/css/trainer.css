@@ -11,6 +11,7 @@ header {
     top: 0;
     width: 100%;
     background-color: black;
+    z-index: 1;
 }
 
 nav {
@@ -42,12 +43,11 @@ a:hover {
 }
 
 h1 {
-    margin: unset;
-    padding-top: 5%;
-    padding-right: 5%;
+    margin-top: 7%;
     text-align: center;
     display: flex;
     flex-direction: column;
+    font-size: 3em;
 }
 
 .tooltip {
@@ -108,7 +108,7 @@ h1 {
 
 #wrapper {
 	width: 100%;
-    height: 514px;
+    height: 524px;
     display: flex;
     margin-top: 10%;
 }
@@ -129,40 +129,89 @@ h1 {
 }
 
 #corso {
-	background-color: pink;
+	background: linear-gradient(to bottom, transparent 20%, black), url(/images/prova.jpeg);
+    background-size: cover;
     margin-right: 3%;
     text-align: center;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    width: 24%;
-    height: 30%;
+    width: 40%;
+    height: 85%;
     justify-content: center;
-    margin-bottom: 3%;
+    margin-bottom: 7%;
 }
 
 #dettagli_corso {
-	font-size: medium;
-    margin: 5%;
-}
-
-#link_corso, #difficolta {
-	margin: unset;
+    font-size: medium;
+    margin: 10% 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 #corsi_wrapper {
 	display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 58%;
+    overflow: auto;
+    margin-top: 7%;
 }
 
-h4 {
+#info_trainer {
+	margin: 5% 7%;
+    text-align: center;
+}
+
+#nome {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 14%;
+    font-size: x-large;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#link_corso {
+    border: solid;
+    padding: 4% 7%;
+    border-radius: 3px;
+    font-size: large;
+    margin: 0% 15%;
+}
+
+#sfondo {
+	backdrop-filter: blur(3px);
+	height: 100%;
+	border-radius: 20px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+#no_corsi {
+	display: flex;
+    flex-direction: column;
+    color: white;
 	text-align: center;
+	align-items: center;
 }
 
+#no_corsi h1 {
+	margin-top: 2%;
+	font-size: xx-large;
+}
 
+#allenati {
+    border: solid;
+    padding: 1% 2%;
+    border-radius: 3px;
+    font-size: large;
+}
 
-
-
-
-
+#text {
+	margin-bottom: 5%;
+}

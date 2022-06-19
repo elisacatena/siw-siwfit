@@ -36,9 +36,9 @@
 			<div id="trainers_wrapper">
 				<div th:each="trainer : ${trainers}" id="dettagli_wrapper">
 								<div id="dettagli_trainer">
-									<span th:text="${trainer.nome}+ ' ' +${trainer.cognome}">trainer</span>
-									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}}" >DETTAGLI</a>
-								
+									<div id="nome" th:text="${trainer.nome}+ ' ' +${trainer.cognome}"></div>
+									<div id="desc" th:text="${trainer.descrizione}"></div>
+									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}}" >Scopri di più</a>
 							</div>
 					</div>
 			</div>

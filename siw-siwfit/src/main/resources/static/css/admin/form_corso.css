@@ -109,3 +109,7 @@ form {
 .select {
 	margin: 2%;
 }
+
+#error {
+	color: #ff5d66;
+}

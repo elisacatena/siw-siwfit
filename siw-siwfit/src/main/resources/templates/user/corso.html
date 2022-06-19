@@ -42,24 +42,25 @@
 					<h1 th:text="${corso.nome}">nome corso</h1>
 					<div id="data_wrapper">
 						<span>Data: </span>
-						<span id="data" th:text="${corso.data}">data corso</span>
+						<span id="data" th:text="${corso.data}"></span>
 					</div>
 					<div id="details">
-						<div style="margin-left:0" class="info" th:text="'⏳'+' '+${corso.durata}">durata corso</div>
-						<div class="info" th:text="${corso.difficolta}">difficolta corso</div>
-						<div class="info" th:text="'💪🏼'+' '+${corso.sala}">sala corso</div>
+						<div style="margin-left:0" class="info" th:text="'⏳ '+${corso.durata}"></div>
+						<div class="info" th:text="'🔥 '+${corso.difficolta}"></div>
+						<div class="info" th:text="'🏋🏻 '+${corso.sala}"></div>
 					</div>
-					<span id="desc" th:text="${corso.descrizione}">descrizione corso</span>
-					<span th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}">trainer corso</span>
+					<span id="desc" th:text="${corso.descrizione}"></span>
+					<div id="trainer">
+						<img id="img_trainer" src="/images/icon_trainer.png"> 
+						<a id="conosci" th:href="@{'/user/trainer' + '/' + ${corso.trainer.id}}">Conosci meglio il trainer</a>
+						<p th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></p>
+						<p id="trainer_desc" th:text="${corso.trainer.descrizione}"></p>
+					</div>
 					<div id="btn_wrapper">
-						<p class="no" th:if="${prenotazione}">prenota</p>
-						<p class="si" th:unless="${prenotazione}">
-						<a th:href="@{'/user/prenota' + '/' + ${corso.id}}" th:text="prenota"></a>
-						</p>
-						<p class="si" th:if="${cancellazione}">
-							<a th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id}}" th:text="'cancella'+' '+'prenotazione'">cancella prenotazione</a>
-						</p>
-						<p class="no" th:unless="${cancellazione}">cancella prenotazione</p>
+						<p class="no" th:if="${prenotazione}">Prenota</p>
+						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id}}" th:text="Prenota"></a>
+						<a class="si" th:if="${cancellazione}" th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id}}" th:text="'Cancella'+' '+'prenotazione'"></a>
+						<p class="no" th:unless="${cancellazione}">Cancella prenotazione</p>
 					</div>
 				</div>
 			</div>

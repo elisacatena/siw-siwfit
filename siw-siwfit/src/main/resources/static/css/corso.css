@@ -12,6 +12,7 @@ header {
     top: 0;
     width: 100%;
     background-color: black;
+    z-index: 1;
 }
 
 nav {
@@ -109,7 +110,7 @@ a {
 
 #wrapper {
 	width: 100%;
-    height: 514px;
+    height: 524px;
     display: flex;
     margin-top: 10%;
 }
@@ -126,6 +127,7 @@ a {
 #dettagli_wrapper {
 	width:50%;
 	color:aliceblue;
+	overflow: auto;
 }
 
 #corso_container {
@@ -170,8 +172,9 @@ a {
 
 #desc {
 	font-size: large;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: justify;
 }
 
 #btn_wrapper {
@@ -179,37 +182,56 @@ a {
 	justify-content: center;
 }
 
-.no {
-	background-color: #555;
+.si , .no{
+	border: solid;
+    padding: 3% 5%;
     border-radius: 3px;
-    padding: 1%;
-    min-width: 33%;
-    text-align: center;
     font-size: large;
-    margin-right: 2%;
-    width: fit-content;
-}
-
-.si {
-	background-color: white;
-    border-radius: 3px;
-    padding: 1%;
-    min-width: 33%;
-    text-align: center;
-    font-size: large;
-    margin-right: 2%;  
-    width: fit-content;
-}
-
-.si a {
-	color:black;
+     min-width: 30%;
+     align-self: center;
+     margin:2%;
+     text-align: center;
 }
 
 .si:hover {
-	background-color: #ff5d66;
+	color: #ff5d66;
+    pointer-events: cursor;
 }
 
+#trainer {
+    background-color: #19191a;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 3%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#conosci {
+	color: #8b8b8b;
+	margin-bottom: -1%;
+}
 
+#conosci:hover {
+	color: #ff5d66;
+}
 
+#img_trainer {
+	background-color: white;
+    padding: 2%;
+    border-radius: 50%;
+    margin: 2%;
+    border: solid #555;
+    width: 70px;
+    height: 70px;
+}
 
+#trainer_desc {
+	margin: 2% 3%;
+}
+
+h1 {
+	text-transform: uppercase;
+}

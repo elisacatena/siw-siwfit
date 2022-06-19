@@ -30,15 +30,30 @@
 				</div>					
 				</nav>
 			</header>
-	
-			<div id="corsi_wrapper">
+			
+			<div th:if="${user.corsiPrenotati.size()}==0" id="no_corsi">
+				<h1>😣</h1>
+				<h2>
+					Non hai ancora corsi prenotati
+				</h2>
+				<div id="">
+					Ma non smettere di allenarti! Prenota subito un corso
+				</div>
+				<a id="allenati2" class="allenati" th:href="@{/user/categorie}"	>Scopri di più</a>
+			</div>
+			
+			<div th:unless="${user.corsiPrenotati.size()}==0" id="corsi_wrapper">
 				<div th:each="corso : ${user.corsiPrenotati}" id="dettagli_wrapper">
-					<div id="dettagli_corso">
-							<p th:text="${corso.difficolta}">difficolta</p>
-							<p th:text="${corso.data}+' '+${corso.durata}">data</p>
-							<p th:text="${corso.nome}"></p>
-							<a
-							th:href="@{'/user/corso' + '/' + ${corso.id}}"	>DETTAGLI CORSO</a>
+					<div id="sfondo">
+						<div id="dettagli_corso">
+								<p id="difficolta" th:text="${corso.difficolta}"></p>
+								<div id="data_durata">
+									<span id="data" th:text="${corso.data}+' '"></span> •<span th:text="' '+${corso.durata}"></span>
+								</div>
+								<p id="title" th:text="${corso.nome}"></p>
+								<a class="allenati"
+								th:href="@{'/user/corso' + '/' + ${corso.id}}"	>Dettagli corso</a>
+							</div>
 						</div>
 				</div>
 			</div>

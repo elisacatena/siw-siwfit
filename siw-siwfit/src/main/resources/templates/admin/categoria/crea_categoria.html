@@ -27,7 +27,7 @@
 			<div id="form_wrapper">
 			
 				<form th:action="@{/admin/new_categoria}" method="POST" th:object="${categoria}">
-							<div th:if="${#fields.hasGlobalErrors()}">
+							<div id="error" th:if="${#fields.hasGlobalErrors()}">
 								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 							</div>
 							<div>
