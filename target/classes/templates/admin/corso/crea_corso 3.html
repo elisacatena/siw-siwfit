@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/admin/form_corso.css">
+	</head>
+	
+	<body>
+	
+		<div id="buttons_wrapper">
+			<a th:href="@{/admin/corsi}">
+				<button id="button">BACK</button>
+			</a>
+			<a th:href="@{/admin/homeadmin}">
+				<button id="button">HOME</button>
+			</a>
+		</div>
+		
+		<div>
+		
+			<div id="wrapper">
+				<div id="aggiungi">
+					<h2>AGGIUNGI UN CORSO</h2>
+				</div>
+			</div>
+			
+			<div id="form_wrapper">
+			
+				<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}">
+							<div id="error" th:if="${#fields.hasGlobalErrors()}">
+								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+							</div>
+							<div id="corso">
+									<div>
+										<span>
+											<input class="input" type="text" th:field="*{nome}" placeholder="Nome..." required/>
+										</span>
+										<span>
+											<input class="input" type="text" th:field="*{descrizione}" placeholder="Descrizione..." required/>
+										</span>
+										
+									</div>
+									
+								<span>
+											<input class="input" type="date" th:field="*{data}" placeholder="Data..." required/>
+										</span>
+										
+										<div class="select">
+											<label for="durata">Durata:</label>
+		
+											<select name="" id="durata" th:field="*{durata}" required>
+												  <option value="15 min">15 min</option>
+												  <option value="20 min">20 min</option>
+												  <option value="30 min">30 min</option>
+												  <option value="45 min">45 min</option>
+												  <option value="60 min">60 min</option>
+											</select>
+											
+									  </div>
+		
+								<div>
+									<span>Difficoltà:</span>
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="facile" value="facile" required/>
+									<label for="facile">Facile </label>
+										
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="intermedio" value="intermedio"/>
+									<label for="intermedio">Intermedio</label>
+									
+									<input class="input" type = 'radio' th:field= '*{difficolta}' id="avanzato" value="avanzato"/>
+									<label for="avanzato">Avanzato</label>
+									
+								</div>
+							
+								<div>
+									<span>
+										<input class="input" type="text" th:field="*{sala}" placeholder="Sala..." required/>
+									</span>
+									
+									<span>
+										<input class="input" type="number" min="0" th:field="*{numeroMaxPersone}" placeholder="Numero max persone..." required/>
+									</span>
+								</div>
+								
+								<div class="select">
+									<label for="trainer">Trainer:</label>
+									 <select th:field="*{trainer}" id="trainer" required>
+						                <option th:each="trainer : ${trainers}"
+										th:text="${trainer.nome} + ' ' + ${trainer.cognome}" th:value="${trainer.id}">
+						                </option>
+						            </select>
+								</div>
+							  
+							  <div class="select">
+									<label for="categoria">Categoria:</label>
+									 <select th:field="*{categoria}" id="categoria" required>
+						                <option th:each="categoria : ${categorie}"
+										th:text="${categoria.nome}" th:value="${categoria.id}">
+						                </option>
+						            </select>
+								</div>
+								
+							</div>
+							<div id="conf_btn">
+								<button id="conferma" type="submit">CONFERMA</button>
+							</div>
+						</form>
+			
+			</div>
+		</div>
+
+	</body>
+</html>
+

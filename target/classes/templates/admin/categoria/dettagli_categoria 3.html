@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/admin/dettagli.css">
+	</head>
+	<body>
+		<div id="container">
+			<h2>CATEGORIA</h2>	
+			<div id="button_wrapper">
+				<a th:href="@{/admin/homeadmin}">
+					<button id="button">HOME
+					</button></a>
+			</div>
+		</div>
+		
+		<div id="wrapper">
+			<div id="elenco">
+				<ul>
+					<li th:each="cat : ${categorie}">
+						<div th:if="${categoria.id} ==  ${cat.id}" id="selected">
+							<a th:href="@{'/admin/dettagli_categoria'+'/'+${cat.id}}" th:text="${cat.nome}"></a>
+						</div>
+						<div th:if="${categoria.id} !=  ${cat.id}">
+							<a th:href="@{'/admin/dettagli_categoria'+'/'+${cat.id}}" th:text="${cat.nome}"></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="dettagli">
+					<div id="modifiche-btn">
+						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >
+							<img class="mod_icon" src="/images/writing.png">
+						</a>
+						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">
+							<img class="trash_icon" src="/images/trash.png">
+						</a>
+					</div>
+					<h4>Corsi di questa categoria:</h4>
+					<ul id="elencoCorsi">
+						<li th:each="corso : ${categoria.corsi}" id="corso">
+							<span th:text="${corso.nome}"></span>
+						</li>
+					</ul>
+					<div id="add" >
+						<div class="tooltip">
+							<a th:href="@{/admin/crea_categoria}">➕</a>
+							<div class="tooltiptext">
+								<span>Aggiungi</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		</div>
+
+	</body>
+</html>
