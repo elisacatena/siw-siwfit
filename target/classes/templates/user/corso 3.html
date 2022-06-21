@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title> Dettagli corso </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/corso.css">
+	</head>
+	
+	<body>
+	
+		<header>
+				<nav>
+					<div>
+						<img id="logo" src="/images/logo.png">
+					</div>
+					<div id="container">
+						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
+						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
+						<a class="link_nav" th:href="@{/user/trainers}">Trainers</a>
+						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+					</div>
+					
+					<div class="tooltip">
+		  			<div class="tooltiptext">
+		  				<div>
+		  					<p th:text="${user.nome}"></p>
+		  					<p th:text="${user.cognome}"></p>
+		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+		  				</div>
+		  			</div>
+				</div>		
+				
+				</nav>
+			</header>
+			
+		<div id="wrapper">
+			<div id="img_wrapper">
+			</div>
+			<div id="dettagli_wrapper">
+				<div id="corso_container">
+					<div id="categoria" th:text="${corso.categoria.nome}">categoria corso</div>
+					<h1 th:text="${corso.nome}">nome corso</h1>
+					<div id="data_wrapper">
+						<span>Data: </span>
+						<span id="data" th:text="${corso.data}"></span>
+					</div>
+					<div id="details">
+						<div style="margin-left:0" class="info" th:text="'⏳ '+${corso.durata}"></div>
+						<div class="info" th:text="'🔥 '+${corso.difficolta}"></div>
+						<div class="info" th:text="'🏋🏻 '+${corso.sala}"></div>
+					</div>
+					<span id="desc" th:text="${corso.descrizione}"></span>
+					<div id="trainer">
+						<img id="img_trainer" src="/images/icon_trainer.png"> 
+						<a id="conosci" th:href="@{'/user/trainer' + '/' + ${corso.trainer.id}}">Conosci meglio il trainer</a>
+						<p th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></p>
+						<p id="trainer_desc" th:text="${corso.trainer.descrizione}"></p>
+					</div>
+					<div id="btn_wrapper">
+						<p class="no" th:if="${prenotazione}">Prenota</p>
+						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id}}" th:text="Prenota"></a>
+						<a class="si" th:if="${cancellazione}" th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id}}" th:text="'Cancella'+' '+'prenotazione'"></a>
+						<p class="no" th:unless="${cancellazione}">Cancella prenotazione</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
