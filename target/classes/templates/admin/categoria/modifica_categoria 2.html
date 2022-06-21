@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/admin/form_categoria.css">
+	</head>
+	
+	<body>
+		
+		<div id="buttons_wrapper">
+			<a th:href="@{/admin/categorie}">
+				<button id="button">BACK</button>
+			</a>
+			<a th:href="@{/admin/homeadmin}">
+				<button id="button">HOME</button>
+			</a>
+		</div>
+		
+		<div id="wrapper">
+				<div id="aggiungi">
+					<h2>MODIFICA CATEGORIA</h2>
+				</div>
+			</div>
+		<div id="form_wrapper">	
+			<form th:action="@{'/admin/edit_categoria'+'/'+${categoria.id}}" method="POST" th:object="${categoria}">
+				<div id="error" th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<div>
+					<span>
+						<input type="text" th:field="*{nome}" th:value="*{nome}" placeholder="Nome..." required />
+					</span>
+				</div>
+				<div id="conf_btn">
+						<button id="conferma" type="submit">CONFERMA</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+
