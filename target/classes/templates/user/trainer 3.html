@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${trainer.nome}+' '+${trainer.cognome}"></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/trainer.css">
+	</head>
+	
+	<body>
+	
+		<header>
+				<nav>
+					<div>
+						<img id="logo" src="/images/logo.png">
+					</div>
+					<div id="container">
+						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
+						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
+						<a class="link_nav" th:href="@{/user/trainers}">Trainers</a>
+						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+					</div>
+					
+					<div class="tooltip">
+		  			<div class="tooltiptext">
+		  				<div>
+		  					<p th:text="${user.nome}"></p>
+		  					<p th:text="${user.cognome}"></p>
+		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+		  				</div>
+		  			</div>
+				</div>		
+				
+				</nav>
+			</header>
+			
+			
+			
+		<div id="wrapper">
+			<div id="img_wrapper">
+			</div>
+			<div id="dettagli_wrapper">
+				<h1 th:text="${trainer.nome}+' '+${trainer.cognome}"></h1>
+				<div id="info_trainer" th:text="${trainer.descrizione}"></div>
+				
+					<div id="corsi_wrapper">
+					
+						<div th:if="${trainer.corsi.size()}==0" id="no_corsi">
+							<h1>😣</h1>
+							<h3>
+								In questo momento non ci sono classi del tuo trainer preferito
+							</h3>
+							<div id="text">
+								Ma non smettere di allenarti! Scegline subito un altro
+							</div>
+							<a id="allenati" th:href="@{/user/trainers}">Trova un altro trainer</a>
+						</div>
+						
+						<div id="corso" th:each="corso : ${trainer.corsi}"  th:unless="${trainer.corsi.size()}==0">
+							<div id="sfondo">
+								<div id="dettagli_corso">
+									<p id="nome" th:text="${corso.nome}"></p>
+									<a id="link_corso" th:href="@{'/user/corso' + '/' + ${corso.id}}">Scopri di più</a>			
+								</div>	
+							</div>
+						</div>
+					</div>
+			</div>
+			
+		</div>
+
+	</body>
+</html>
