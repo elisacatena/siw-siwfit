@@ -44,12 +44,14 @@ public class Corso {
 	@ManyToMany
 	private List<User> iscritti;
 	
+	private String img;
+	
 	public Corso() {
 		this.iscritti = new ArrayList<User>();
 	}
 
 	public Corso(String nome, String data, String difficolta, String durata, String descrizione, String sala,
-			int numeroMaxPersone, Trainer trainer, Categoria categoria) {
+			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img) {
 		this.nome = nome;
 		this.data = data;
 		this.difficolta = difficolta;
@@ -58,7 +60,7 @@ public class Corso {
 		this.sala = sala;
 		this.numeroMaxPersone = numeroMaxPersone;
 		this.trainer = trainer;
-		//this.categoria = categoria;
+		this.img = img;
 	}
 	
 	public Long getId() {
@@ -134,6 +136,15 @@ public class Corso {
 
 	public void setIscritti(List<User> iscritti) {
 		this.iscritti = iscritti;
+	}
+	
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override

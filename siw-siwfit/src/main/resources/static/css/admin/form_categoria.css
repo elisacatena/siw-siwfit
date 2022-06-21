@@ -55,7 +55,7 @@ a {
     background-image: url("/images/form_categoria.jpg");
     top: 14%;
     position: absolute;
-    height: 73%;
+    height: 80%;
     width: 32%;
     left: 20%;
     text-align: center;
@@ -91,3 +91,8 @@ input {
 	 color: #ff5d66;
 }
 
+.campo {
+	display: flex;
+    flex-direction: column;
+    color: white;
+}

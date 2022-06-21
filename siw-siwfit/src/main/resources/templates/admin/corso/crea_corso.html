@@ -26,7 +26,7 @@
 			
 			<div id="form_wrapper">
 			
-				<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}">
+				<form th:action="@{/admin/new_corso}" method="POST" th:object="${corso}" enctype="multipart/form-data">
 							<div id="error" th:if="${#fields.hasGlobalErrors()}">
 								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 							</div>
@@ -98,6 +98,9 @@
 						                </option>
 						            </select>
 								</div>
+
+								<label id="immagine">Immagine Corso: </label>
+								<div><input type="file" name="image" accept="image/png,image/jpeg,image/jpg"/></div>
 								
 							</div>
 							<div id="conf_btn">

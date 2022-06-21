@@ -32,7 +32,7 @@
 						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >
 							<img src="/images/writing.png" style="width: 70%;">
 						</a>
-						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}">
+						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}" onclick="return confirm('Sei sicuro di voler eliminare questa categoria? Ricorda, eliminerai anche i corsi relativi!')">
 							<img src="/images/trash.png" style="width: 65%;">
 						</a>
 					</div>

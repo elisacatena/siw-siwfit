@@ -57,8 +57,8 @@ a:hover {
 }
 
 #corso {
-	background: linear-gradient(to bottom, transparent 20%, black),
-		url(/images/prova.jpeg);
+	background: linear-gradient(to bottom, transparent 20%, black);
+		/*url(/images/prova.jpeg);*/
 	background-size: cover;
 	margin-right: 3%;
 	text-align: center;

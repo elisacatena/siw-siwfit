@@ -1,5 +1,6 @@
 package it.uniroma3.siw.siwfit.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,11 +10,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.example.demo.util.FileUploadUtil;
 
 import it.uniroma3.siw.siwfit.controller.validator.CorsoValidator;
 import it.uniroma3.siw.siwfit.model.Corso;
@@ -115,10 +121,19 @@ public class CorsoController {
 	}
 
 	@PostMapping("/admin/new_corso") 
-	public String addCorso(@Valid @ModelAttribute("corso") Corso corso, BindingResult bindingResult, Model model) {		
+	public String addCorso(@Valid @ModelAttribute("corso") Corso corso, @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult, Model model) throws IOException {		
 		this.corsoValidator.validate(corso, bindingResult);
-		if(!bindingResult.hasErrors()) {     
-			this.corsoService.save(corso);
+		if(!bindingResult.hasErrors()) {
+			
+        	/*UPLOAD FOTO*/
+        	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            corso.setImg("/images/" + fileName);
+            this.corsoService.save(corso);
+            String uploadDir = "src/main/resources/static/images/";
+            if(fileName != null && multipartFile != null && !fileName.isEmpty())
+            	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+			
+			
 			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";   
 		}
@@ -136,10 +151,22 @@ public class CorsoController {
 	}
 	
 	@PostMapping("/admin/edit_corso/{id}") 
-	public String modificaCorso(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, BindingResult bindingResult, Model model) {		
+	public String modificaCorso(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult, Model model) throws IOException {		
 		this.corsoValidator.validate(corso, bindingResult);
 		if (!bindingResult.hasErrors()) { 
-			this.corsoService.save(corso);
+			
+			
+        	/*UPLOAD FOTO*/
+        	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            String uploadDir = "src/main/resources/static/images/";
+            if(fileName != null && multipartFile != null && !fileName.isEmpty()) {
+            	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+                corso.setImg("/images/" + fileName);
+            }
+            this.corsoService.save(corso);
+			
+			
+			
 			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";
 		} 

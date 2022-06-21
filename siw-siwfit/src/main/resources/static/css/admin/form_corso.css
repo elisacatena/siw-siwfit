@@ -51,7 +51,7 @@ a {
 	background-image: url("/images/form_categoria.jpg");
 	top: 14%;
 	position: absolute;
-	height: 73%;
+	height: 80%;
 	width: 32%;
 	left: 20%;
 	text-align: center;
@@ -112,4 +112,14 @@ form {
 
 #error {
 	color: #ff5d66;
+}
+
+.riga {
+	display: flex;
+    justify-content: space-evenly;
+    margin: 2%;
+}
+
+#immagine {
+	margin-top: 3%;
 }

@@ -193,6 +193,10 @@ a {
      text-align: center;
 }
 
+.no {
+    color: #2a2a2e;
+}
+
 .si:hover {
 	color: #ff5d66;
     pointer-events: cursor;

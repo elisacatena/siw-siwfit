@@ -31,7 +31,7 @@
 						<a th:href="@{'/admin/modifica_corso'+'/'+${corso.id}}" >
 							<img src="/images/writing.png" style="width: 70%;">
 						</a>
-						<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}">
+						<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}" onclick="return confirm('Sei sicuro di voler eliminare questo corso?')">
 							<img src="/images/trash.png" style="width: 65%;">
 						</a>
 					</div>
@@ -54,6 +54,8 @@
 						<span><strong>Trainer:</strong><span th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></span></span>
 		
 						<span><strong>Categoria:</strong><span th:text="${corso.categoria.nome}"></span></span>
+
+						<span><strong>Immagine:</strong><span th:text="${corso.img}"></span></span>
 					</div>
 					
 					<div id="add" >

@@ -2,42 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/admin/form_categoria.css">
 	</head>
 	
 	<body>
-		<h1> Modifica trainer</h1>
-		<form th:action="@{'/admin/edit_trainer'+'/'+${trainer.id}}" method="POST" th:object="${trainer}">
-			<div th:if="${#fields.hasGlobalErrors()}">
-				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		
+		<div id="buttons_wrapper">
+			<a th:href="@{/admin/categorie}">
+				<button id="button">BACK</button>
+			</a>
+			<a th:href="@{/admin/homeadmin}">
+				<button id="button">HOME</button>
+			</a>
+		</div>
+		
+		<div id="wrapper">
+			<div id="aggiungi">
+					<h2>MODIFICA TRAINER</h2>
+				</div>
 			</div>
-			<div>
-				<span>Nome:</span> 
-				<span>
-					<input type="text" th:field="*{nome}" th:value="*{nome}" />
-				</span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-			</div>
-			<div>
-				<span>Cognome:</span> 
-				<span>
-					<input type="text"
-					th:field="*{cognome}" th:value="*{cognome}" />
-					</span> 
-					<span
-					th:if="${#fields.hasErrors('cognome')}"
-					th:errors="*{cognome}"></span>
-			</div>
-			<div>
-				<span>Descrizione:</span>
-				<span>
-					<input type="text" th:field="*{descrizione}" th:value="*{descrizione}"/>
-				</span>
-				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-			</div>
-			<div>
-				<span><button type="submit">CONFERMA</button></span>
-			</div>
-		</form>
+		<div id="form_wrapper">	
+			<form th:action="@{'/admin/edit_trainer'+'/'+${trainer.id}}" method="POST" th:object="${trainer}">
+				<div id="error" th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<div class="campo">
+					<span>Nome:</span> 
+					<span>
+						<input type="text" th:field="*{nome}" th:value="*{nome}" required/>
+					</span>
+				</div>
+				<div class="campo">
+					<span>Cognome:</span> 
+					<span>
+						<input type="text" th:field="*{cognome}" th:value="*{cognome}" required/>
+						</span> 
+				</div>
+				<div class="campo">
+					<span>Descrizione:</span>
+					<span>
+						<input type="text" th:field="*{descrizione}" th:value="*{descrizione}" required/>
+					</span>
+				</div>
+				<div id="conf_btn">
+						<button id="conferma" type="submit">CONFERMA</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
 

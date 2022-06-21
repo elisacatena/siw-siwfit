@@ -39,6 +39,6 @@ public class CorsoService {
 	}
 
 	public boolean alreadyExists(Corso corso) {
-		return this.corsoRepository.existsByNomeAndDataAndDifficoltaAndDurataAndDescrizioneAndSalaAndNumeroMaxPersoneAndTrainerAndCategoria(corso.getNome(), corso.getData(), corso.getDifficolta(), corso.getDurata(), corso.getDescrizione(), corso.getSala(), corso.getNumeroMaxPersone(), corso.getTrainer(), corso.getCategoria());
+		return this.corsoRepository.existsByNomeAndDataAndDifficoltaAndDurataAndDescrizioneAndSalaAndNumeroMaxPersoneAndTrainerAndCategoriaAndImg(corso.getNome(), corso.getData(), corso.getDifficolta(), corso.getDurata(), corso.getDescrizione(), corso.getSala(), corso.getNumeroMaxPersone(), corso.getTrainer(), corso.getCategoria(),corso.getImg());
 	}
 }

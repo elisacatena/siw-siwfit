@@ -5,15 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SiwSiwfitApplication implements CommandLineRunner {
+public class SiwSiwfitApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(SiwSiwfitApplication.class, args);
 	}
-	
-	@Override
-	public void run(String... args) throws Exception {
-	
-	}
+
 
 }
