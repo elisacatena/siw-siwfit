@@ -19,27 +19,18 @@
                     	
                     	<div class="input_form"> 
                             <span><input type="text" placeholder="nome" required th:field="${user.nome}"/></span>
-                       <span th:if="${#fields.hasErrors('user.nome')}"
-               				 th:errors="${user.nome}" th:style="'color:red'"></span>
                         </div>
                         
                         <div class="input_form"> 
                             <span><input type="text" placeholder="cognome" required th:field="${user.cognome}"/></span>
-                       <span th:if="${#fields.hasErrors('user.cognome')}"
-               				 th:errors="${user.cognome}" th:style="'color:red'"></span>
                         </div>
                         
                         <div class="input_form"> 
                             <span><input type="text" placeholder="username" required th:field="${credenziali.username}"/></span>
-                       		<span th:if="${#fields.hasErrors('credenziali.username')}"
-               				 th:errors="${credenziali.username}" th:style="'color:red'"></span>
                         </div>
 
                         <div class="input_form"> 
-                            <span><input type="password" placeholder="password" required th:field="${credenziali.password}"/>
-                      		</span>
-                      		<span th:if="${#fields.hasErrors('credenziali.password')}"
-               				 th:errors="${credenziali.password}" th:style="'color:red'"></span>
+                            <span><input type="password" placeholder="password" required th:field="${credenziali.password}"/></span>
                         </div>
                         
                         <div id="submit">

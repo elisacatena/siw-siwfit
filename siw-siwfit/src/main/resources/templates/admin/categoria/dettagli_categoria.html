@@ -30,10 +30,10 @@
 			<div id="dettagli">
 					<div id="modifiche-btn">
 						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >
-							<img src="/images/writing.png" style="width: 70%;">
+							<img class="mod_icon" src="/images/writing.png">
 						</a>
 						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}" onclick="return confirm('Sei sicuro di voler eliminare questa categoria? Ricorda, eliminerai anche i corsi relativi!')">
-							<img src="/images/trash.png" style="width: 65%;">
+							<img class="trash_icon" src="/images/trash.png">
 						</a>
 					</div>
 					<h4>Corsi di questa categoria:</h4>

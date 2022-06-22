@@ -55,7 +55,7 @@
 							<a id="allenati" th:href="@{/user/trainers}">Trova un altro trainer</a>
 						</div>
 						
-						<div id="corso" th:each="corso : ${trainer.corsi}"  th:unless="${trainer.corsi.size()}==0">
+						<div id="corso" th:each="corso : ${trainer.corsi}"  th:unless="${trainer.corsi.size()}==0" th:style="'background:url('+ ${corso.img} +');background-size: cover;'">
 							<div id="sfondo">
 								<div id="dettagli_corso">
 									<p id="nome" th:text="${corso.nome}"></p>

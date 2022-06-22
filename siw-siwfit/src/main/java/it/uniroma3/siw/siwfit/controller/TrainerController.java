@@ -82,29 +82,15 @@ public class TrainerController {
 	
 	@PostMapping("/admin/edit_trainer/{id}") 
 	public String modificaTrainer(@PathVariable("id")  Long id, @Valid @ModelAttribute("trainer") Trainer trainer, BindingResult bindingResult, Model model) {		
-//		this.trainerValidator.validate(trainer, bindingResult);
-//		if (!bindingResult.hasErrors()){ // se i dati sono corretti
-//			Trainer vecchioTrainer = this.trainerService.findById(id);
-//			vecchioTrainer.setId(trainer.getId());
-//			vecchioTrainer.setNome(trainer.getNome());
-//			vecchioTrainer.setCognome(trainer.getCognome());
-//			this.trainerService.save(vecchioTrainer);
-//			model.addAttribute("trainer", vecchioTrainer);
-//			return "redirect:/admin/trainers";
-//			} 
-//		else {
-//			return "admin/trainer/modifica_trainer.html"; // ci sono errori, torna alla form iniziale
-//		}
-		Trainer t = trainer;
 		this.trainerService.deleteById(id);
-		this.trainerValidator.validate(t, bindingResult);
-		if (!bindingResult.hasErrors()){ // se i dati sono corretti
-			this.trainerService.save(t);
-			model.addAttribute("trainer", t);
+		this.trainerValidator.validate(trainer, bindingResult);
+		if (!bindingResult.hasErrors()) { 
+			this.trainerService.save(trainer);
+			model.addAttribute("trainer", trainer);
 			return "redirect:/admin/trainers";
 		} 
 		else {
-			return "admin/trainer/modifica_trainer.html"; // ci sono errori, torna alla form iniziale
+			return "admin/trainer/modifica_trainer.html"; 
 		}
 	}
 	
@@ -118,7 +104,7 @@ public class TrainerController {
 	public String getDettagliTrainer(@PathVariable Long id, Model model) {
 		model.addAttribute("trainer", this.trainerService.findById(id));
 		model.addAttribute("trainers", this.trainerService.findAll());
-		return "/admin/trainer/dettagli_trainer";
+		return "admin/trainer/dettagli_trainer";
 	}
 	
 }

@@ -129,7 +129,6 @@ h1 {
 }
 
 #corso {
-	background: linear-gradient(to bottom, transparent 20%, black), url(/images/prova.jpeg);
     background-size: cover;
     margin-right: 3%;
     text-align: center;
@@ -190,6 +189,7 @@ h1 {
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	background: linear-gradient(to bottom, transparent 20%, black);
 }
 
 #no_corsi {

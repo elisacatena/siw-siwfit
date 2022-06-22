@@ -21,7 +21,7 @@ public class HomeController {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
 		model.addAttribute("user", user);
-		return "/user/corsi_prenotati.html";
+		return "user/corsi_prenotati.html";
 	}
 
 	@GetMapping("/user/homeuser")

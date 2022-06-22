@@ -96,3 +96,11 @@ input {
     flex-direction: column;
     color: white;
 }
+
+.mod_icon {
+	width: 70%;
+}
+
+.trash_icon {
+	width: 65%;
+}

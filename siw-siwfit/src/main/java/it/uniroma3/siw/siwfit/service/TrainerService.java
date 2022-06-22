@@ -18,10 +18,6 @@ public class TrainerService {
 	@Autowired
 	private TrainerRepository trainerRepository;
 
-	public boolean alreadyExists(Trainer trainer) {
-		return this.trainerRepository.existsById(trainer.getId());
-	}
-
 	public List<Trainer> findAll() {
 		List<Trainer> trainers = new ArrayList<Trainer>();
 		for (Trainer trainer : trainerRepository.findAll()) {
@@ -39,8 +35,8 @@ public class TrainerService {
 		this.trainerRepository.save(trainer);
 	}
 	
-	public boolean alreadyExistsByNomeAndCognome(Trainer trainer) {
-		return this.trainerRepository.existsByNomeAndCognome(trainer.getNome(), trainer.getCognome());
+	public boolean alreadyExists(Trainer trainer) {
+		return this.trainerRepository.existsByNomeAndCognomeAndDescrizione(trainer.getNome(), trainer.getCognome(), trainer.getDescrizione());
 	}
 
 	@Transactional

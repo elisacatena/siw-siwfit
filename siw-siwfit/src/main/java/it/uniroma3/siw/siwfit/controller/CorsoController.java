@@ -147,14 +147,13 @@ public class CorsoController {
 		model.addAttribute("trainers", this.trainerService.findAll());
 		model.addAttribute("categorie", this.categoriaService.findAll());
 		model.addAttribute("corso", this.corsoService.findById(id));
-		return "/admin/corso/modifica_corso.html";
+		return "admin/corso/modifica_corso.html";
 	}
 	
 	@PostMapping("/admin/edit_corso/{id}") 
 	public String modificaCorso(@PathVariable("id")  Long id, @Valid @ModelAttribute("corso") Corso corso, @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult, Model model) throws IOException {		
 		this.corsoValidator.validate(corso, bindingResult);
 		if (!bindingResult.hasErrors()) { 
-			
 			
         	/*UPLOAD FOTO*/
         	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -163,17 +162,17 @@ public class CorsoController {
             	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
                 corso.setImg("/images/" + fileName);
             }
-            this.corsoService.save(corso);
-			
-			
-			
+            else {
+            	corso.setImg(this.corsoService.findById(id).getImg());
+            }
+            this.corsoService.save(corso);		
 			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";
 		} 
 		else {
 			model.addAttribute("trainers", this.trainerService.findAll());
 			model.addAttribute("categorie", this.categoriaService.findAll());
-			return "/admin/corso/modifica_corso.html"; 
+			return "admin/corso/modifica_corso.html"; 
 		}
 	}
 	
@@ -187,7 +186,7 @@ public class CorsoController {
 	public String getDettagliCorso(@PathVariable Long id, Model model) {
 		model.addAttribute("corso", this.corsoService.findById(id));
 		model.addAttribute("corsi", this.corsoService.findAll());
-		return "/admin/corso/dettagli_corso";
+		return "admin/corso/dettagli_corso";
 	}
 
 

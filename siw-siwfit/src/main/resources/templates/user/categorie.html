@@ -40,7 +40,7 @@
 				<div id="nome_cat" th:text="${categoria.nome}">categoria1
 				</div>
 				<div id="corsi_wrapper">
-					<div id="corso" th:each="corso : ${categoria.corsi}" th:style="'background:url('+ ${corso.img} +');'"> 
+					<div id="corso" th:each="corso : ${categoria.corsi}" th:style="'background:url('+ ${corso.img} +');background-size: cover;'"> 
 						<div id="sfondo">
 							<div id="dettagli_corso">
 								<p id="difficolta" th:text="${corso.difficolta}"></p>

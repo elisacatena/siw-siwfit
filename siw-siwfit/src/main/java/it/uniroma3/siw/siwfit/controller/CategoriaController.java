@@ -98,7 +98,7 @@ public class CategoriaController {
 	public String getDettagliCategoria(@PathVariable Long id, Model model) {
 		model.addAttribute("categoria", this.categoriaService.findById(id));
 		model.addAttribute("categorie",this.categoriaService.findAll());
-		return "/admin/categoria/dettagli_categoria";
+		return "admin/categoria/dettagli_categoria";
 	}
 
 

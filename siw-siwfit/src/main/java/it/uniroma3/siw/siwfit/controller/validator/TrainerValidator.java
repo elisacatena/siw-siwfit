@@ -21,7 +21,7 @@ public class TrainerValidator implements Validator{
 
 	@Override
 	public void validate(Object trainer, Errors errors) {
-		if(this.trainerService.alreadyExistsByNomeAndCognome((Trainer)trainer)) {
+		if(this.trainerService.alreadyExists((Trainer)trainer)) {
 			errors.reject("trainer.duplicato");
 		}
 	}

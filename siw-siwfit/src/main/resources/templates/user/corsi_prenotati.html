@@ -43,7 +43,7 @@
 			</div>
 			
 			<div th:unless="${user.corsiPrenotati.size()}==0" id="corsi_wrapper">
-				<div th:each="corso : ${user.corsiPrenotati}" id="dettagli_wrapper">
+				<div th:each="corso : ${user.corsiPrenotati}" id="dettagli_wrapper" th:style="'background:url('+ ${corso.img} +');background-size: cover;'">
 					<div id="sfondo">
 						<div id="dettagli_corso">
 								<p id="difficolta" th:text="${corso.difficolta}"></p>

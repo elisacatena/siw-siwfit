@@ -119,8 +119,6 @@ a {
 }
 
 #dettagli_wrapper{
-   background: linear-gradient(to bottom, transparent 20%, black),
-		url(/images/prova.jpeg);
 	background-size: cover;
 	margin-right: 3%;
 	text-align: center;
@@ -140,6 +138,7 @@ a {
 
 #sfondo {
 	backdrop-filter: blur(3px);
+	background: linear-gradient(to bottom, transparent 20%, black);
 	height: 100%;
 	border-radius: 20px;
 	display: flex;

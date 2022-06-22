@@ -29,10 +29,10 @@
 			<div id="dettagli">
 					<div id="modifiche-btn">
 						<a th:href="@{'/admin/modifica_corso'+'/'+${corso.id}}" >
-							<img src="/images/writing.png" style="width: 70%;">
+							<img class="mod_icon" src="/images/writing.png">
 						</a>
 						<a th:href="@{'/admin/delete_corso'+'/'+${corso.id}}" onclick="return confirm('Sei sicuro di voler eliminare questo corso?')">
-							<img src="/images/trash.png" style="width: 65%;">
+							<img class="trash_icon" src="/images/trash.png">
 						</a>
 					</div>
 					
