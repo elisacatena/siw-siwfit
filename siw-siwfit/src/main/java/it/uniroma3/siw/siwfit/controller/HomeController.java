@@ -1,34 +1,28 @@
 package it.uniroma3.siw.siwfit.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import it.uniroma3.siw.siwfit.model.User;
-import it.uniroma3.siw.siwfit.service.CredenzialiService;
+import it.uniroma3.siw.siwfit.service.UserService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private CredenzialiService credenzialiService;
+	private UserService userService;
 
-	@GetMapping("/user/corsi_prenotati")
-	public String getCorsiPrenotati(Model model) {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
-		model.addAttribute("user", user);
+	@GetMapping("/user/corsi_prenotati/{id}")
+	public String getCorsiPrenotati(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("user", this.userService.findById(id));
 		return "user/corsi_prenotati.html";
 	}
 
-	@GetMapping("/user/homeuser")
-	public String getHomeUser(Model model) {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
-		model.addAttribute("user",user);
+	@GetMapping("/user/homeuser/{id}")
+	public String getHomeUser(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("user", this.userService.findById(id));
 		return "user/homeUser.html";
 	}
 	

@@ -47,9 +47,9 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
-             // solo gli utenti autenticati con ruolo DEFAULT possono accedere a risorse con path /user/**
-                .antMatchers(HttpMethod.GET, "/user/**").hasAnyAuthority(DEFAULT_ROLE)
-                .antMatchers(HttpMethod.POST, "/user/**").hasAnyAuthority(DEFAULT_ROLE)
+                // solo gli utenti autenticati con ruolo DEFAULT possono accedere a risorse con path /user/**
+                .antMatchers(HttpMethod.GET, "/user/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/user/**").authenticated()
                 // tutti gli utenti autenticati possono accere alle pagine rimanenti 
                 .anyRequest().authenticated()
 
@@ -61,7 +61,12 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
-
+                
+             	//google
+    			.and().oauth2Login()
+    			.loginPage("/login")
+    			.defaultSuccessUrl("/defaultOauth")
+    			
                 // logout paragraph: qui definiamo il logout
                 .and().logout()
                 // il logout è attivato con una richiesta GET a "/logout"

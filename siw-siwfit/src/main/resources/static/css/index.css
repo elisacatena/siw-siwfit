@@ -17,7 +17,7 @@ h1 {
 	color: white;
 	text-align: center;
 	font-size: x-large;
-	margin-bottom: 9%;
+	margin-bottom: 6%;
 }
 
 #login_wrapper {
@@ -61,6 +61,7 @@ form {
 	flex-direction: column;
 	align-items: center;
 	margin: unset;
+	margin-top: 2%;
 }
 
 .input_form {
@@ -121,4 +122,13 @@ a {
 
 #back a:hover {
 	color: #ff5d66;
+}
+
+#error {
+	color: #ff5d66;
+}
+
+#logo_google {
+	height: 60%;
+    width: auto;
 }

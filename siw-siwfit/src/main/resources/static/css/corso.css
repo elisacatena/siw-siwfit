@@ -106,6 +106,7 @@ a:hover {
 a {
 	text-decoration: none;
 	color: white;
+	margin-right: 30px;
 }
 
 #wrapper {
@@ -217,6 +218,7 @@ a {
 #conosci {
 	color: #8b8b8b;
 	margin-bottom: -1%;
+	margin-right: unset;
 }
 
 #conosci:hover {

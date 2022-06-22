@@ -33,7 +33,7 @@ img {
 
 a {
     text-decoration: none;
-    color: aliceblue;
+    color: white;
     margin-right: 30px;
 }
 
@@ -183,7 +183,7 @@ h1 {
 }
 
 #sfondo {
-	backdrop-filter: blur(3px);
+	backdrop-filter: blur(2px);
 	height: 100%;
 	border-radius: 20px;
 	display: flex;

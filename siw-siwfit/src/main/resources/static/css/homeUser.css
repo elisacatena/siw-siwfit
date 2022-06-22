@@ -33,7 +33,7 @@ img {
 
 a {
     text-decoration: none;
-    color: aliceblue;
+    color: white;
     margin-right: 30px;
 }
 
@@ -50,9 +50,9 @@ a:hover {
     background-image: url("/images/sfondo_home.jpg");
     background-position: center ;
     background-size: cover;
-    height: 500px;
+    height: 521px;
     text-align: center;
-    color: aliceblue;
+    color: white;
     margin-top: 10%;
 }
 
@@ -62,21 +62,18 @@ a:hover {
 
 h1 {
     margin: unset;
-    padding-top: 5%;
-    padding-right: 5%;
+    padding-top: 3%;
+    padding-right: 4%;
     text-align: initial;
     display: flex;
     flex-direction: column;
+    font-size: xxx-large;
 }
 
 #slogan {
     text-align: end;
     display: flex;
     justify-content: flex-end;
-}
-
-footer {
-    color: aliceblue;
 }
 
 .tooltip {

@@ -14,10 +14,10 @@
 						<img id="logo" src="/images/logo.png">
 					</div>
 					<div id="container">
-						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
-						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
-						<a class="link_nav" th:href="@{/user/trainers}">Trainers</a>
-						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+						<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+						<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+						<a th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+						<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
 					</div>
 					
 					<div class="tooltip">
@@ -52,14 +52,14 @@
 					<span id="desc" th:text="${corso.descrizione}"></span>
 					<div id="trainer">
 						<img id="img_trainer" src="/images/icon_trainer.png"> 
-						<a id="conosci" th:href="@{'/user/trainer' + '/' + ${corso.trainer.id}}">Conosci meglio il trainer</a>
+						<a id="conosci" th:href="@{'/user/trainer' + '/' + ${corso.trainer.id} + '/' + ${user.id}}">Conosci meglio il trainer</a>
 						<p th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></p>
 						<p id="trainer_desc" th:text="${corso.trainer.descrizione}"></p>
 					</div>
 					<div id="btn_wrapper">
 						<p class="no" th:if="${prenotazione}">Prenota</p>
-						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id}}" th:text="Prenota"></a>
-						<a class="si" th:if="${cancellazione}" th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id}}" th:text="'Cancella'+' '+'prenotazione'"></a>
+						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="Prenota"></a>
+						<a class="si" th:if="${cancellazione}" th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="'Cancella'+' '+'prenotazione'"></a>
 						<p class="no" th:unless="${cancellazione}">Cancella prenotazione</p>
 					</div>
 				</div>

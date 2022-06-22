@@ -5,8 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,9 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.siwfit.controller.validator.CategoriaValidator;
 import it.uniroma3.siw.siwfit.model.Categoria;
-import it.uniroma3.siw.siwfit.model.User;
 import it.uniroma3.siw.siwfit.service.CategoriaService;
-import it.uniroma3.siw.siwfit.service.CredenzialiService;
+import it.uniroma3.siw.siwfit.service.UserService;
 
 @Controller
 public class CategoriaController {
@@ -31,15 +28,13 @@ public class CategoriaController {
 	private CategoriaValidator categoriaValidator;
 	
 	@Autowired
-	private CredenzialiService credenzialiService;
+	private UserService userService;
 	
-	@GetMapping("/user/categorie")
-	public String getCategorieUser(Model model) {
+	@GetMapping("/user/categorie/{id}")
+	public String getCategorieUser(@PathVariable("id") Long id, Model model) {
 		List<Categoria> categorie = categoriaService.findAll();
 		model.addAttribute("categorie", categorie);
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
-		model.addAttribute("user",user);
+		model.addAttribute("user", this.userService.findById(id));
 		return "user/categorie.html";
 	}
 	

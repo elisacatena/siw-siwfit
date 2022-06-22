@@ -22,6 +22,8 @@ public class User {
 	
 	private String cognome;
 	
+	private String email;
+	
 	@ManyToMany(mappedBy = "iscritti")
 	private List<Corso> corsiPrenotati;
 	
@@ -64,6 +66,14 @@ public class User {
 
 	public void setCorsiPrenotati(List<Corso> corsiPrenotati) {
 		this.corsiPrenotati = corsiPrenotati;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

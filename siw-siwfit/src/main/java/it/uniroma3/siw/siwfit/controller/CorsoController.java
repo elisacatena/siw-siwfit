@@ -6,8 +6,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,7 +24,6 @@ import it.uniroma3.siw.siwfit.model.Corso;
 import it.uniroma3.siw.siwfit.model.User;
 import it.uniroma3.siw.siwfit.service.CategoriaService;
 import it.uniroma3.siw.siwfit.service.CorsoService;
-import it.uniroma3.siw.siwfit.service.CredenzialiService;
 import it.uniroma3.siw.siwfit.service.TrainerService;
 import it.uniroma3.siw.siwfit.service.UserService;
 
@@ -43,9 +40,6 @@ public class CorsoController {
 	private UserService userService;
 
 	@Autowired
-	private CredenzialiService credenzialiService;
-
-	@Autowired
 	private TrainerService trainerService;
 	
 	@Autowired
@@ -54,12 +48,11 @@ public class CorsoController {
 	/* id è del corso.
 	 * Il metodo resituisce un corso tramite il suo id.
 	 */
-	@GetMapping("/user/corso/{id}")
-	public String getCorso(@PathVariable("id")Long id, Model model) {
+	@GetMapping("/user/corso/{id}/{idU}")
+	public String getCorso(@PathVariable("id")Long id, @PathVariable("idU") Long idU, Model model) {
 		Corso corso = corsoService.findById(id);
 		model.addAttribute("corso", corso);
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
+		User user = this.userService.findById(idU);
 		model.addAttribute("user", user);
 		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
 		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
@@ -68,10 +61,9 @@ public class CorsoController {
 		return "user/corso.html";
 	}
 
-	@GetMapping("/user/prenota/{id}") //id del corso
-	public String getPrenota(@PathVariable("id") Long id, Model model) {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
+	@GetMapping("/user/prenota/{id}/{idU}") //id del corso
+	public String getPrenota(@PathVariable("id") Long id, @PathVariable("idU") Long idU, Model model) {
+		User user = this.userService.findById(idU);
 		Corso corso = this.corsoService.findById(id);
 		user.getCorsiPrenotati().add(corso);
 		this.userService.save(user);
@@ -86,10 +78,9 @@ public class CorsoController {
 		return "user/corso";
 	}
 
-	@GetMapping("/user/delete_corsoPrenotato/{id}")
-	public String deleteCorsoPrenotatoFromCorso(@PathVariable("id")Long id, Model model) {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = credenzialiService.getCredenziali(userDetails.getUsername()).getUser();
+	@GetMapping("/user/delete_corsoPrenotato/{id}/{idU}")
+	public String deleteCorsoPrenotatoFromCorso(@PathVariable("id")Long id, @PathVariable("idU") Long idU, Model model) {
+		User user = this.userService.findById(idU);
 		Corso corso = this.corsoService.findById(id);
 		user.getCorsiPrenotati().remove(corso);
 		corso.getIscritti().remove(user);

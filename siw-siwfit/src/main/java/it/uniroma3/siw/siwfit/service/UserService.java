@@ -22,9 +22,16 @@ public class UserService {
 	public User findById(Long id) {
 		return this.userRepository.findById(id).get();
 	}
+	
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmail(email);
+	}
 
 	public boolean alreadyExists(User user) {
 		return this.userRepository.existsById(user.getId());
 	}
 
+	public boolean alreadyExistsByEmail(User user) {
+		return this.userRepository.existsByEmail(user.getEmail());
+	}
 }

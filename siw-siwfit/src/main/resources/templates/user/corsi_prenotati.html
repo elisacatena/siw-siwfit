@@ -13,10 +13,10 @@
 						<img src="/images/logo.png">
 					</div>
 					<div id="container">
-						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
-						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
-						<a class="link_nav" th:href="@{/user/trainers}">Trainers</a>
-						<a class="link_nav" id="corsi_prenotati" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+						<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+						<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+						<a th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+						<a id="corsi_prenotati" th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
 					</div>
 					
 					<div class="tooltip">
@@ -39,7 +39,7 @@
 				<div id="">
 					Ma non smettere di allenarti! Prenota subito un corso
 				</div>
-				<a id="allenati2" class="allenati" th:href="@{/user/categorie}"	>Scopri di più</a>
+				<a id="allenati2" class="allenati" th:href="@{'/user/categorie' + '/' + ${user.id}}"	>Scopri di più</a>
 			</div>
 			
 			<div th:unless="${user.corsiPrenotati.size()}==0" id="corsi_wrapper">
@@ -52,7 +52,7 @@
 								</div>
 								<p id="title" th:text="${corso.nome}"></p>
 								<a class="allenati"
-								th:href="@{'/user/corso' + '/' + ${corso.id}}"	>Dettagli corso</a>
+								th:href="@{'/user/corso' + '/' + ${corso.id} + '/' + ${user.id}}"	>Dettagli corso</a>
 							</div>
 						</div>
 				</div>

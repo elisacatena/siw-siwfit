@@ -12,10 +12,10 @@
 					<img src="/images/logo.png">
 				</div>
 				<div id="container">
-					<a id="home" th:href="@{/user/homeuser}">Home</a>
-					<a th:href="@{/user/categorie}">Categorie</a>
-					<a th:href="@{/user/trainers}">Trainers</a>
-					<a th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>
+					<a id="home" th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+					<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+					<a th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+					<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
 				</div>
 
 				<div class="tooltip">
@@ -40,10 +40,6 @@
 				</h1>
 			</div>
 		</div>
-
-		<footer>
-			info palestra
-		</footer>
 
 	</body>
 </html>

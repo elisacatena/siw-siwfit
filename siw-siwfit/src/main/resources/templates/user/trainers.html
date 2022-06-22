@@ -14,10 +14,10 @@
 						<img src="/images/logo.png">
 					</div>
 					<div id="container">
-						<a class="link_nav" th:href="@{/user/homeuser}">Home</a>
-						<a class="link_nav"th:href="@{/user/categorie}">Categorie</a>
-						<a class="link_nav" id="trainers" th:href="@{/user/trainers}">Trainers</a>
-						<a class="link_nav" th:href="@{/user/corsi_prenotati}">Corsi prenotati</a>	
+						<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+						<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+						<a id="trainers" th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+						<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
 					</div>
 					
 					<div class="tooltip">
@@ -38,7 +38,7 @@
 								<div id="dettagli_trainer">
 									<div id="nome" th:text="${trainer.nome}+ ' ' +${trainer.cognome}"></div>
 									<div id="desc" th:text="${trainer.descrizione}"></div>
-									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}}" >Scopri di più</a>
+									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}+'/'+${user.id}}" >Scopri di più</a>
 							</div>
 					</div>
 			</div>
