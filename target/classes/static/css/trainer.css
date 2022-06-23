@@ -19,6 +19,15 @@ nav {
     align-items: center;
 }
 
+nav a {
+	margin-right: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
 img {
     height: 60px;
     margin-left: 22%;
@@ -29,12 +38,6 @@ img {
     padding-left: 10%;
     padding-top: 2.5%;
     font-size: x-large;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-    margin-right: 30px;
 }
 
 a:hover {

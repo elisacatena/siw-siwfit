@@ -4,6 +4,7 @@
 		<title th:text="${trainer.nome}+' '+${trainer.cognome}"></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="/css/trainer.css">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon.jpeg">
 	</head>
 	
 	<body>
@@ -47,7 +48,7 @@
 						<div th:if="${trainer.corsi.size()}==0" id="no_corsi">
 							<h1>😣</h1>
 							<h3>
-								In questo momento non ci sono classi del tuo trainer preferito
+								In questo momento non ci sono corsi del tuo trainer preferito
 							</h3>
 							<div id="text">
 								Ma non smettere di allenarti! Scegline subito un altro

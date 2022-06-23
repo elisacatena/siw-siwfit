@@ -32,10 +32,13 @@ img {
 	font-size: x-large;
 }
 
+nav a {
+	margin-right: 30px;
+}
+
 a {
 	text-decoration: none;
 	color: white;
-	margin-right: 30px;
 }
 
 a:hover {
