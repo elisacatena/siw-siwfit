@@ -43,6 +43,7 @@
 					<div id="data_wrapper">
 						<span>Data: </span>
 						<span id="data" th:text="${corso.data}"></span>
+						<span th:text="' • '+${corso.orario}"></span>
 					</div>
 					<div id="details">
 						<div class="info"id="durata" th:text="'⏳ '+${corso.durata}"></div>
