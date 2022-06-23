@@ -45,9 +45,7 @@
 							<input class="input" type="date" th:field="*{data}" placeholder="Data..." required/>
 						</span>
 						<script>data.min = new Date().toISOString().split("T")[0];</script>
-						<span>
-							<input class="input" type="text" th:field="*{orario}" placeholder="Orario..." required/>
-						</span>	
+								
 						<div class="select">
 							<label for="durata">Durata:</label>
 							<select name="" id="durata" th:field="*{durata}" required>
