@@ -249,3 +249,8 @@ h1 {
 #durata {
 	margin-left: 0;
 }
+
+#disponibilita {
+	text-align: center;
+    margin: 2%;
+}

@@ -55,6 +55,8 @@ public class CorsoController {
 		model.addAttribute("user", user);
 		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
 		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
+		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
+		model.addAttribute("disponibilita", disponibilita);
 		model.addAttribute("prenotazione", prenotazione);
 		model.addAttribute("cancellazione", cancellazione);
 		return "user/corso.html";
@@ -72,9 +74,11 @@ public class CorsoController {
 		model.addAttribute("corso", corso);
 		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
 		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
+		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
+		model.addAttribute("disponibilita", disponibilita);
 		model.addAttribute("prenotazione", prenotazione);
 		model.addAttribute("cancellazione", cancellazione);
-		return "user/corso";
+		return "redirect:/user/corso/{id}/{idU}";
 	}
 
 	@GetMapping("/user/delete_corsoPrenotato/{id}/{idU}")
@@ -92,6 +96,8 @@ public class CorsoController {
 		model.addAttribute("cancellazione", cancellazione);
 		model.addAttribute("user", user);
 		model.addAttribute("corso", corso);
+		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
+		model.addAttribute("disponibilita", disponibilita);
 		return "user/corso.html";
 	}
 

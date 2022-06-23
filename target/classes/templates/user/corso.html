@@ -57,6 +57,9 @@
 						<p th:text="${corso.trainer.nome}+' '+${corso.trainer.cognome}"></p>
 						<p id="trainer_desc" th:text="${corso.trainer.descrizione}"></p>
 					</div>
+					<div id="disponibilita">
+						Posti ancora disponibili: <span th:text="${disponibilita}"></span>
+					</div>
 					<div id="btn_wrapper">
 						<p class="no" th:if="${prenotazione}">Prenota</p>
 						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="Prenota"></a>
