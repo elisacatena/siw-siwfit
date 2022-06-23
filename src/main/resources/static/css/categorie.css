@@ -30,6 +30,7 @@ img {
 	padding-left: 10%;
 	padding-top: 2.5%;
 	font-size: x-large;
+	width: 47%;
 }
 
 nav a {
@@ -99,7 +100,7 @@ ul {
 	width: 60px;
 	border-radius: 50%;
 	background-size: cover;
-	margin-left: 350px;
+	margin-left: 270px;
 	margin-top: 2%;
 }
 
