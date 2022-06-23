@@ -1,7 +1,6 @@
 package it.uniroma3.siw.siwfit.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -98,8 +97,7 @@ public class CorsoController {
 
 	@GetMapping("/admin/corsi")
 	public String getCategorieAdmin(Model model) {
-		List<Corso> corsi = corsoService.findAll();
-		model.addAttribute("corsi", corsi);
+		model.addAttribute("corsi", corsoService.findAll());
 		return "admin/corso/corsi.html";
 	}
 
@@ -117,13 +115,12 @@ public class CorsoController {
 		if(!bindingResult.hasErrors()) {
 			
         	/*UPLOAD FOTO*/
-        	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            corso.setImg("/images/" + fileName);
+        	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());     //prende il nome del file 
+            corso.setImg("/images/" + fileName);     //e lo concatena con /images
             this.corsoService.save(corso);
-            String uploadDir = "src/main/resources/static/images/";
+            String uploadDir = "src/main/resources/static/images/";        
             if(fileName != null && multipartFile != null && !fileName.isEmpty())
-            	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-			
+            	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);         //carica la foto nel percorso specificato
 			
 			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";   

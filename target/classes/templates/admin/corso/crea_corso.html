@@ -44,6 +44,7 @@
 								<span>
 											<input class="input" type="date" th:field="*{data}" placeholder="Data..." required/>
 										</span>
+										<script>data.min = new Date().toISOString().split("T")[0];</script>
 										
 										<div class="select">
 											<label for="durata">Durata:</label>

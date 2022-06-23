@@ -1,7 +1,6 @@
 package it.uniroma3.siw.siwfit.authentication;
 
 import static it.uniroma3.siw.siwfit.model.Credenziali.ADMIN_ROLE;
-import static it.uniroma3.siw.siwfit.model.Credenziali.DEFAULT_ROLE;
 
 import javax.sql.DataSource;
 

@@ -32,8 +32,7 @@ public class CategoriaController {
 	
 	@GetMapping("/user/categorie/{id}")
 	public String getCategorieUser(@PathVariable("id") Long id, Model model) {
-		List<Categoria> categorie = categoriaService.findAll();
-		model.addAttribute("categorie", categorie);
+		model.addAttribute("categorie", categoriaService.findAll());
 		model.addAttribute("user", this.userService.findById(id));
 		return "user/categorie.html";
 	}
