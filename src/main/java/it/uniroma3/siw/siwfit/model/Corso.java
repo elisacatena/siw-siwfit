@@ -24,6 +24,8 @@ public class Corso {
 	@Column(nullable = false)
 	private String data;
 	
+	private String orario;
+	
 	private String difficolta;
 	
 	private String durata;
@@ -51,7 +53,7 @@ public class Corso {
 	}
 
 	public Corso(String nome, String data, String difficolta, String durata, String descrizione, String sala,
-			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img) {
+			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img, String orario) {
 		this.nome = nome;
 		this.data = data;
 		this.difficolta = difficolta;
@@ -61,6 +63,7 @@ public class Corso {
 		this.numeroMaxPersone = numeroMaxPersone;
 		this.trainer = trainer;
 		this.img = img;
+		this.orario = orario;
 	}
 	
 	public Long getId() {
@@ -157,6 +160,14 @@ public class Corso {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+	
+	public String getOrario() {
+		return orario;
+	}
+
+	public void setOrario(String orario) {
+		this.orario = orario;
 	}
 
 	@Override
