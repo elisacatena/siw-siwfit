@@ -183,7 +183,6 @@ h1 {
 }
 
 #sfondo {
-	backdrop-filter: blur(2px);
 	height: 100%;
 	border-radius: 20px;
 	display: flex;
