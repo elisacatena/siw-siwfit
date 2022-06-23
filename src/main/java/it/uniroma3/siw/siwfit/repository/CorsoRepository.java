@@ -11,9 +11,9 @@ import it.uniroma3.siw.siwfit.model.Trainer;
 public interface CorsoRepository extends CrudRepository<Corso, Long> {
 
 
-	public boolean existsByNomeAndDataAndDifficoltaAndDurataAndDescrizioneAndSalaAndNumeroMaxPersoneAndTrainerAndCategoriaAndImg(
+	public boolean existsByNomeAndDataAndDifficoltaAndDurataAndDescrizioneAndSalaAndNumeroMaxPersoneAndTrainerAndCategoriaAndImgAndOrario(
 			String nome, String data, String difficolta, String durata, String descrizione, String sala,
-			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img);
+			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img, String orario);
 
 
 }
