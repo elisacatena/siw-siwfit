@@ -23,51 +23,49 @@
 					</div>
 					
 					<div class="tooltip">
-		  			<div class="tooltiptext">
-		  				<div>
-		  					<p th:text="${user.nome}"></p>
-		  					<p th:text="${user.cognome}"></p>
-		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
-		  				</div>
-		  			</div>
-				</div>		
+			  			<div class="tooltiptext">
+			  				<div>
+			  					<p th:text="${user.nome}"></p>
+			  					<p th:text="${user.cognome}"></p>
+			  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+			  				</div>
+			  			</div>
+					</div>		
 				
 				</nav>
 			</header>
 			
-		
-		<ul>
-			<li th:each="categoria : ${categorie}">
-				<div id="nome_cat" th:text="${categoria.nome}">categoria1
-				</div>
-				
-				<div th:if="${categoria.corsi.size()}==0" id="no_corsi">
-					<h1>😣</h1>
-					<h3>
-						In questo momento non ci sono corsi per questa categoria
-					</h3>
-					<div>
-						Ma non smettere di allenarti! Scegline subito un'altra
+			<ul>
+				<li th:each="categoria : ${categorie}">
+					<div id="nome_cat" th:text="${categoria.nome}">categoria1
 					</div>
-				</div>
-						
-				<div th:unless="${categoria.corsi.size()}==0"  id="corsi_wrapper">
-					<div id="corso" th:each="corso : ${categoria.corsi}" th:style="'background:url('+ ${corso.img} +');background-size: cover;'"> 
-						<div id="sfondo" >
-							<div id="dettagli_corso">
-								<p id="difficolta" th:text="${corso.difficolta}"></p>
-								<div id="data_durata">
-									<span id="data" th:text="${corso.data}+' '"></span> •<span th:text="' '+${corso.durata}"></span>
+					
+					<div th:if="${categoria.corsi.size()}==0" id="no_corsi">
+						<h1>😣</h1>
+						<h3>
+							In questo momento non ci sono corsi per questa categoria
+						</h3>
+						<div>
+							Ma non smettere di allenarti! Scegline subito un'altra
+						</div>
+					</div>
+							
+					<div th:unless="${categoria.corsi.size()}==0"  id="corsi_wrapper">
+						<div id="corso" th:each="corso : ${categoria.corsi}" th:style="'background:url('+ ${corso.img} +');background-size: cover;'"> 
+							<div id="sfondo" >
+								<div id="dettagli_corso">
+									<p id="difficolta" th:text="${corso.difficolta}"></p>
+									<div id="data_durata">
+										<span id="data" th:text="${corso.data}+' '"></span> •<span th:text="' '+${corso.durata}"></span>
+									</div>
+									<p id="title" th:text="${corso.nome}"></p>
+									<a id="allenati" th:href="@{'/user/corso' + '/' + ${corso.id} + '/' + ${user.id}}"	>Scopri di più</a>
 								</div>
-								<p id="title" th:text="${corso.nome}"></p>
-								<a id="allenati"
-								th:href="@{'/user/corso' + '/' + ${corso.id} + '/' + ${user.id}}"	>Scopri di più</a>
 							</div>
 						</div>
 					</div>
-				</div>
-			</li>
-		</ul>
+				</li>
+			</ul>
 		
 	</body>
 </html>

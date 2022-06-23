@@ -1,7 +1,5 @@
 package it.uniroma3.siw.siwfit.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +30,14 @@ public class CategoriaController {
 	
 	@GetMapping("/user/categorie/{id}")
 	public String getCategorieUser(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("categorie", categoriaService.findAll());
+		model.addAttribute("categorie", this.categoriaService.findAll());
 		model.addAttribute("user", this.userService.findById(id));
 		return "user/categorie.html";
 	}
 	
 	@GetMapping("/admin/categorie")
 	public String getCategorieAdmin(Model model) {
-		List<Categoria> categorie = categoriaService.findAll();
-		model.addAttribute("categorie", categorie);
+		model.addAttribute("categorie", categoriaService.findAll());
 		return "admin/categoria/categorie.html";
 	}
 	
@@ -55,7 +52,6 @@ public class CategoriaController {
 		this.categoriaValidator.validate(categoria, bindingResult);
 		if(!bindingResult.hasErrors()) {     
 			this.categoriaService.save(categoria);
-			model.addAttribute("categoria", categoria);
 			return "redirect:/admin/categorie";   
 		}
 		else {
@@ -74,7 +70,6 @@ public class CategoriaController {
 		this.categoriaValidator.validate(categoria, bindingResult);
 		if (!bindingResult.hasErrors()) { 
 			this.categoriaService.save(categoria);
-			model.addAttribute("categoria", categoria);
 			return "redirect:/admin/categorie";
 		} 
 		else {

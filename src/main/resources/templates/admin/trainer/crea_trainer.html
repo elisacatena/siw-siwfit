@@ -27,24 +27,24 @@
 			<div id="form_wrapper">
 			
 				<form th:action="@{/admin/new_trainer}" method="POST" th:object="${trainer}">
-							<div th:if="${#fields.hasGlobalErrors()}">
-								<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-							</div>
-							<div>
-								<span>
-									<input type="text" th:field="*{nome}" placeholder="Nome..." required/>
-								</span>
-								<span>
-									<input type="text" th:field="*{cognome}" placeholder="Cognome..." required/>
-								</span>
-								<span>
-									<input type="text" th:field="*{descrizione}" placeholder="Descrizione..." required/>
-								</span>
-							</div>
-							<div id="conf_btn">
-								<button id="conferma" type="submit">CONFERMA</button>
-							</div>
-						</form>
+					<div th:if="${#fields.hasGlobalErrors()}">
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+					</div>
+					<div>
+						<span>
+							<input type="text" th:field="*{nome}" placeholder="Nome..." required/>
+						</span>
+						<span>
+							<input type="text" th:field="*{cognome}" placeholder="Cognome..." required/>
+						</span>
+						<span>
+							<input type="text" th:field="*{descrizione}" placeholder="Descrizione..." required/>
+						</span>
+					</div>
+					<div id="conf_btn">
+						<button id="conferma" type="submit">CONFERMA</button>
+					</div>
+				</form>
 			
 			</div>
 		</div>

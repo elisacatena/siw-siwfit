@@ -66,42 +66,55 @@ public class Corso {
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getData() {
 		return data;
 	}
+	
 	public void setData(String data) {
 		this.data = data;
 	}
+	
 	public String getDifficolta() {
 		return difficolta;
 	}
+	
 	public void setDifficolta(String difficolta) {
 		this.difficolta = difficolta;
 	}
+	
 	public String getDurata() {
 		return durata;
 	}
+	
 	public void setDurata(String durata) {
 		this.durata = durata;
 	}
+	
 	public String getDescrizione() {
 		return descrizione;
 	}
+	
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+	
 	public String getSala() {
 		return sala;
 	}
+	
 	public void setSala(String sala) {
 		this.sala = sala;
 	}
@@ -138,7 +151,6 @@ public class Corso {
 		this.iscritti = iscritti;
 	}
 	
-
 	public String getImg() {
 		return img;
 	}
@@ -151,6 +163,7 @@ public class Corso {
 	public int hashCode() {
 		return this.getData().hashCode() + this.getNome().hashCode() + 31;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null)

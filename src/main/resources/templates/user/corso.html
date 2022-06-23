@@ -10,18 +10,18 @@
 	<body>
 	
 		<header>
-				<nav>
-					<div>
-						<img id="logo" src="/images/logo.png">
-					</div>
-					<div id="container">
-						<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
-						<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
-						<a th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
-						<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
-					</div>
-					
-					<div class="tooltip">
+			<nav>
+				<div>
+					<img id="logo" src="/images/logo.png">
+				</div>
+				<div id="container">
+					<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+					<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+					<a th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+					<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
+				</div>
+				
+				<div class="tooltip">
 		  			<div class="tooltiptext">
 		  				<div>
 		  					<p th:text="${user.nome}"></p>
@@ -30,9 +30,8 @@
 		  				</div>
 		  			</div>
 				</div>		
-				
-				</nav>
-			</header>
+			</nav>
+		</header>
 			
 		<div id="wrapper">
 			<div id="img_wrapper">
@@ -61,8 +60,8 @@
 						Posti ancora disponibili: <span th:text="${disponibilita}"></span>
 					</div>
 					<div id="btn_wrapper">
-						<p class="no" th:if="${prenotazione}">Prenota</p>
-						<a class="si" th:unless="${prenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="Prenota"></a>
+						<p class="no" th:if="${noPrenotazione}">Prenota</p>
+						<a class="si" th:unless="${noPrenotazione}" th:href="@{'/user/prenota' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="Prenota"></a>
 						<a class="si" th:if="${cancellazione}" th:href="@{'/user/delete_corsoPrenotato' + '/' + ${corso.id} + '/' + ${user.id}}" th:text="'Cancella'+' '+'prenotazione'"></a>
 						<p class="no" th:unless="${cancellazione}">Cancella prenotazione</p>
 					</div>

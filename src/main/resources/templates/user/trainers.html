@@ -10,43 +10,39 @@
 	<body>
 	
 		<header>
-				<nav>
-					<div id="img_wrapper">
-						<img src="/images/logo.png">
-					</div>
-					<div id="container">
-						<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
-						<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
-						<a id="trainers" th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
-						<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
-					</div>
-					
-					<div class="tooltip">
-		  			<div class="tooltiptext">
-		  				<div>
-		  					<p th:text="${user.nome}"></p>
-		  					<p th:text="${user.cognome}"></p>
-		  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
-		  				</div>
-		  			</div>
-				</div>		
+			<nav>
+				<div id="img_wrapper">
+					<img src="/images/logo.png">
+				</div>
+				<div id="container">
+					<a th:href="@{'/user/homeuser'+'/'+${user.id}}">Home</a>
+					<a th:href="@{'/user/categorie'+'/'+${user.id}}">Categorie</a>
+					<a id="trainers" th:href="@{'/user/trainers'+'/'+${user.id}}">Trainers</a>
+					<a th:href="@{'/user/corsi_prenotati'+'/'+${user.id}}">Corsi prenotati</a>
+				</div>
 				
-				</nav>
-			</header>
+				<div class="tooltip">
+	  			<div class="tooltiptext">
+	  				<div>
+	  					<p th:text="${user.nome}"></p>
+	  					<p th:text="${user.cognome}"></p>
+	  					<p><a class="link_nav" id="logout" th:href="@{/logout}">Logout</a></p>
+	  				</div>
+	  			</div>
+			</div>		
 			
-			<div id="trainers_wrapper">
-				<div th:each="trainer : ${trainers}" id="dettagli_wrapper">
-								<div id="dettagli_trainer">
-									<div id="nome" th:text="${trainer.nome}+ ' ' +${trainer.cognome}"></div>
-									<div id="desc" th:text="${trainer.descrizione}"></div>
-									<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}+'/'+${user.id}}" >Scopri di più</a>
-							</div>
-					</div>
-			</div>
+			</nav>
+		</header>
+			
+		<div id="trainers_wrapper">
+			<div th:each="trainer : ${trainers}" id="dettagli_wrapper">
+							<div id="dettagli_trainer">
+								<div id="nome" th:text="${trainer.nome}+ ' ' +${trainer.cognome}"></div>
+								<div id="desc" th:text="${trainer.descrizione}"></div>
+								<a href="trainer.html" th:href="@{'/user/trainer' + '/' + ${trainer.id}+'/'+${user.id}}" >Scopri di più</a>
+						</div>
+				</div>
+		</div>
 
-		
-		<footer>
-			FOOTER
-		</footer>
 	</body>
 </html>

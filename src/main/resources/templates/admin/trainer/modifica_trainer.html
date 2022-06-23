@@ -19,9 +19,9 @@
 		
 		<div id="wrapper">
 			<div id="aggiungi">
-					<h2>MODIFICA TRAINER</h2>
-				</div>
+				<h2>MODIFICA TRAINER</h2>
 			</div>
+		</div>
 		<div id="form_wrapper">	
 			<form th:action="@{'/admin/edit_trainer'+'/'+${trainer.id}}" method="POST" th:object="${trainer}">
 				<div id="error" th:if="${#fields.hasGlobalErrors()}">

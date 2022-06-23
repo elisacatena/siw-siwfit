@@ -35,9 +35,9 @@ public class TrainerController {
 		return "user/trainers.html";
 	}
 	
-	@GetMapping("/user/trainer/{id}/{idU}")
-	public String getTrainer(@PathVariable("id") Long id, @PathVariable("idU") Long idU, Model model) {
-		model.addAttribute("trainer", this.trainerService.findById(id));	
+	@GetMapping("/user/trainer/{idT}/{idU}")
+	public String getTrainer(@PathVariable("idT") Long idT, @PathVariable("idU") Long idU, Model model) {
+		model.addAttribute("trainer", this.trainerService.findById(idT));	
 		model.addAttribute("user", this.userService.findById(idU));
 		return "user/trainer.html";
 	}
@@ -59,7 +59,6 @@ public class TrainerController {
 		this.trainerValidator.validate(trainer, bindingResult);
 		if(!bindingResult.hasErrors()) {     
 			this.trainerService.save(trainer);
-			model.addAttribute("trainer", trainer);
 			return "redirect:/admin/trainers";   
 		}
 		else {
@@ -78,7 +77,6 @@ public class TrainerController {
 		this.trainerValidator.validate(trainer, bindingResult);
 		if (!bindingResult.hasErrors()) { 
 			this.trainerService.save(trainer);
-			model.addAttribute("trainer", trainer);
 			return "redirect:/admin/trainers";
 		} 
 		else {

@@ -44,65 +44,55 @@ public class CorsoController {
 	@Autowired
 	private CategoriaService categoriaService;
 
-	/* id è del corso.
-	 * Il metodo resituisce un corso tramite il suo id.
-	 */
-	@GetMapping("/user/corso/{id}/{idU}")
-	public String getCorso(@PathVariable("id")Long id, @PathVariable("idU") Long idU, Model model) {
-		Corso corso = corsoService.findById(id);
+	@GetMapping("/user/corso/{idC}/{idU}")
+	public String getCorso(@PathVariable("idC")Long idC, @PathVariable("idU") Long idU, Model model) {
+		Corso corso = corsoService.findById(idC);
 		model.addAttribute("corso", corso);
 		User user = this.userService.findById(idU);
 		model.addAttribute("user", user);
-		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
+		Boolean noPrenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() == corso.getNumeroMaxPersone());
 		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
 		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
 		model.addAttribute("disponibilita", disponibilita);
-		model.addAttribute("prenotazione", prenotazione);
+		model.addAttribute("noPrenotazione", noPrenotazione);
 		model.addAttribute("cancellazione", cancellazione);
 		return "user/corso.html";
 	}
 
-	@GetMapping("/user/prenota/{id}/{idU}") //id del corso
-	public String getPrenota(@PathVariable("id") Long id, @PathVariable("idU") Long idU, Model model) {
+	@GetMapping("/user/corsi_prenotati/{id}")
+	public String getCorsiPrenotati(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("user", this.userService.findById(id));
+		return "user/corsi_prenotati.html";
+	}
+
+	@GetMapping("/user/prenota/{idC}/{idU}") 
+	public String addCorsoPrenotato(@PathVariable("idC") Long idC, @PathVariable("idU") Long idU, Model model) {
 		User user = this.userService.findById(idU);
-		Corso corso = this.corsoService.findById(id);
+		Corso corso = this.corsoService.findById(idC);
 		user.getCorsiPrenotati().add(corso);
 		this.userService.save(user);
 		corso.getIscritti().add(user);
 		this.corsoService.save(corso);
 		model.addAttribute("user",user);
 		model.addAttribute("corso", corso);
-		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
-		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
-		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
-		model.addAttribute("disponibilita", disponibilita);
-		model.addAttribute("prenotazione", prenotazione);
-		model.addAttribute("cancellazione", cancellazione);
-		return "redirect:/user/corso/{id}/{idU}";
+		return "redirect:/user/corso/{idC}/{idU}";
 	}
 
-	@GetMapping("/user/delete_corsoPrenotato/{id}/{idU}")
-	public String deleteCorsoPrenotatoFromCorso(@PathVariable("id")Long id, @PathVariable("idU") Long idU, Model model) {
+	@GetMapping("/user/delete_corsoPrenotato/{idC}/{idU}")
+	public String deleteCorsoPrenotato(@PathVariable("idC")Long idC, @PathVariable("idU") Long idU, Model model) {
 		User user = this.userService.findById(idU);
-		Corso corso = this.corsoService.findById(id);
+		Corso corso = this.corsoService.findById(idC);
 		user.getCorsiPrenotati().remove(corso);
 		corso.getIscritti().remove(user);
 		this.corsoService.save(corso);
 		this.userService.save(user);
-
-		Boolean prenotazione = (user.getCorsiPrenotati().contains(corso)) || (corso.getIscritti().size() >= corso.getNumeroMaxPersone());
-		Boolean cancellazione = (user.getCorsiPrenotati().contains(corso));
-		model.addAttribute("prenotazione", prenotazione);
-		model.addAttribute("cancellazione", cancellazione);
 		model.addAttribute("user", user);
 		model.addAttribute("corso", corso);
-		int disponibilita = corso.getNumeroMaxPersone() - corso.getIscritti().size();
-		model.addAttribute("disponibilita", disponibilita);
-		return "user/corso.html";
+		return "redirect:/user/corso/{idC}/{idU}";
 	}
 
 	@GetMapping("/admin/corsi")
-	public String getCategorieAdmin(Model model) {
+	public String getCorsiAdmin(Model model) {
 		model.addAttribute("corsi", corsoService.findAll());
 		return "admin/corso/corsi.html";
 	}
@@ -123,15 +113,16 @@ public class CorsoController {
         	/*UPLOAD FOTO*/
         	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());     //prende il nome del file 
             corso.setImg("/images/" + fileName);     //e lo concatena con /images
-            this.corsoService.save(corso);
             String uploadDir = "src/main/resources/static/images/";        
             if(fileName != null && multipartFile != null && !fileName.isEmpty())
             	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);         //carica la foto nel percorso specificato
 			
-			model.addAttribute("corso", corso);
+            this.corsoService.save(corso);
 			return "redirect:/admin/corsi";   
 		}
 		else {
+			model.addAttribute("trainers", this.trainerService.findAll());
+			model.addAttribute("categorie", this.categoriaService.findAll());
 			return "admin/corso/crea_corso.html";
 		}
 	}
@@ -152,6 +143,7 @@ public class CorsoController {
         	/*UPLOAD FOTO*/
         	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             String uploadDir = "src/main/resources/static/images/";
+            
             if(fileName != null && multipartFile != null && !fileName.isEmpty()) {
             	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
                 corso.setImg("/images/" + fileName);
@@ -159,8 +151,8 @@ public class CorsoController {
             else {
             	corso.setImg(this.corsoService.findById(id).getImg());
             }
+            
             this.corsoService.save(corso);		
-			model.addAttribute("corso", corso);
 			return "redirect:/admin/corsi";
 		} 
 		else {

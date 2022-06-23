@@ -15,6 +15,5 @@ public interface CorsoRepository extends CrudRepository<Corso, Long> {
 			String nome, String data, String difficolta, String durata, String descrizione, String sala,
 			int numeroMaxPersone, Trainer trainer, Categoria categoria, String img);
 
-	
 
 }

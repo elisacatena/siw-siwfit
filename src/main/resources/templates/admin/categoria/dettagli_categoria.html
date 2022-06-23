@@ -29,28 +29,28 @@
 				</ul>
 			</div>
 			<div id="dettagli">
-					<div id="modifiche-btn">
-						<a th:href="@{'/admin/modifica_categoria'+'/'+${categoria.id}}" >
-							<img class="mod_icon" src="/images/writing.png">
-						</a>
-						<a th:href="@{'/admin/delete_categoria'+'/'+${categoria.id}}" onclick="return confirm('Sei sicuro di voler eliminare questa categoria? Ricorda, eliminerai anche i corsi relativi!')">
-							<img class="trash_icon" src="/images/trash.png">
-						</a>
-					</div>
-					<h4>Corsi di questa categoria:</h4>
-					<ul id="elencoCorsi">
-						<li th:each="corso : ${categoria.corsi}" id="corso">
-							<span th:text="${corso.nome}"></span>
-						</li>
-					</ul>
-					<div id="add" >
-						<div class="tooltip">
-							<a th:href="@{/admin/crea_categoria}">➕</a>
-							<div class="tooltiptext">
-								<span>Aggiungi</span>
-							</div>
+				<div id="modifiche-btn">
+					<a th:href="@{'/admin/modifica_categoria' + '/' + ${categoria.id}}" >
+						<img class="mod_icon" src="/images/writing.png">
+					</a>
+					<a th:href="@{'/admin/delete_categoria' + '/' + ${categoria.id}}" onclick="return confirm('Sei sicuro di voler eliminare questa categoria? Ricorda, eliminerai anche i corsi relativi!')">
+						<img class="trash_icon" src="/images/trash.png">
+					</a>
+				</div>
+				<h4>Corsi di questa categoria:</h4>
+				<ul id="elencoCorsi">
+					<li th:each="corso : ${categoria.corsi}" id="corso">
+						<span th:text="${corso.nome}"></span>
+					</li>
+				</ul>
+				<div id="add" >
+					<div class="tooltip">
+						<a th:href="@{/admin/crea_categoria}">➕</a>
+						<div class="tooltiptext">
+							<span>Aggiungi</span>
 						</div>
 					</div>
+				</div>
 			</div>
 		
 		</div>

@@ -18,10 +18,10 @@
 		</div>
 		
 		<div id="wrapper">
-				<div id="aggiungi">
-					<h2>MODIFICA CATEGORIA</h2>
-				</div>
+			<div id="aggiungi">
+				<h2>MODIFICA CATEGORIA</h2>
 			</div>
+		</div>
 		<div id="form_wrapper">	
 			<form th:action="@{'/admin/edit_categoria'+'/'+${categoria.id}}" method="POST" th:object="${categoria}">
 				<div id="error" th:if="${#fields.hasGlobalErrors()}">

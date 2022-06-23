@@ -14,12 +14,6 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/user/corsi_prenotati/{id}")
-	public String getCorsiPrenotati(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("user", this.userService.findById(id));
-		return "user/corsi_prenotati.html";
-	}
-
 	@GetMapping("/user/homeuser/{id}")
 	public String getHomeUser(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("user", this.userService.findById(id));

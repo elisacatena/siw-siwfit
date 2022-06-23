@@ -3,8 +3,6 @@ package it.uniroma3.siw.siwfit.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +29,7 @@ public class TrainerService {
 	}
 
 	@Transactional
-	public void save(@Valid Trainer trainer) {
+	public void save(Trainer trainer) {
 		this.trainerRepository.save(trainer);
 	}
 	
